@@ -1,0 +1,17 @@
+// The Reaper HUD - made by Ingalther. Licence: CC BY-NC-SA 4.0 (credit required, no selling).
+#base "base_notification.res"
+"Resource/UI/notifications/notify_passtime_no_disguise.res"
+{
+	"Notification_Background"
+	{
+		"image"		"replay/thumbnails/rk/notif_ink"
+	}
+	"Notification_Icon"
+	{
+		"icon"		"ico_notify_flag_moving_alt"
+	}
+	"Notification_Label"
+	{
+		"labelText"		"#TF_Passtime_No_Disguise"
+	}
+}

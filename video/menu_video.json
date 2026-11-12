@@ -1,0 +1,15 @@
+{
+  "fps": 30.0,
+  "frames": 330,
+  "parts": 1,
+  "size": [
+    1020,
+    508
+  ],
+  "source": "menu_loop.mp4",
+  "start": 128,
+  "loop_frames": 330,
+  "crossfade": 45,
+  "shade": true,
+  "still_frame": 233
+}

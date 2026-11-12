@@ -1,0 +1,6 @@
+"Modulate"
+{
+	"$basetexture"	"vgui/replay/thumbnails/rk/b/ig_digits_mul"
+	"$mod2x"	"0"
+	"$ignorez"	"1"
+}

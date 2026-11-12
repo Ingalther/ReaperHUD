@@ -1,0 +1,16 @@
+(Don't Fear) The Reaper HUD
+Copyright (c) 2026 Ingalther
+
+This HUD is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+International licence (CC BY-NC-SA 4.0): https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+You may use, share and modify it, as long as you:
+  - BY: keep the credit "The Reaper HUD by Ingalther" (in-game credit, this file and the
+        README included) and link back to the original release;
+  - NC: do not sell it or put it behind a paywall;
+  - SA: release any modified version under this same licence.
+
+The fonts in tools/fonts keep their own licence, the SIL Open Font License 1.1
+(tools/fonts/OFL.txt).
+Team Fortress 2 and its artwork (class portraits, icons, fonts shipped with the game) belong to Valve.
+This is a non-commercial fan work.

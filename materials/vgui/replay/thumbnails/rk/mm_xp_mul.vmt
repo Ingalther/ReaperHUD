@@ -1,0 +1,6 @@
+"Modulate"
+{
+	"$basetexture"	"vgui/replay/thumbnails/rk/mm_xp_mul"
+	"$mod2x"	"1"
+	"$ignorez"	"1"
+}

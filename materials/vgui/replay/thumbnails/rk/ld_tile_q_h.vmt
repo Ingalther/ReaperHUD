@@ -1,0 +1,18 @@
+"UnlitGeneric"
+{
+	"$basetexture"	"vgui/replay/thumbnails/rk/ld_tile_q_h"
+	"$translucent"	"1"
+	"$vertexcolor"	"1"
+	"$vertexalpha"	"1"
+	"$no_fullbright"	"1"
+	"$ignorez"	"1"
+	"Proxies"
+	{
+		"AnimatedTexture"
+		{
+			"animatedtexturevar"	"$basetexture"
+			"animatedtextureframenumvar"	"$frame"
+			"animatedtextureframerate"	"10"
+		}
+	}
+}

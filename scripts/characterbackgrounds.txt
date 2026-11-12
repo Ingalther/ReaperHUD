@@ -1,0 +1,9 @@
+// The Reaper HUD - made by Ingalther. Licence: CC BY-NC-SA 4.0 (credit required, no selling).
+"CharacterBackgrounds"
+{
+	"reaper_shade"
+	{
+		"image"	"replay/thumbnails/rk/blank"
+		"weight"	"1"
+	}
+}

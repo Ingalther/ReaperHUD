@@ -1,0 +1,15 @@
+// The Reaper HUD - made by Ingalther. Licence: CC BY-NC-SA 4.0 (credit required, no selling).
+"chapters"
+{
+	1	"background_reaper_video"
+	2	"background_reaper_video"
+	3	"background_reaper_video"
+	4	"background_reaper_video"
+}
+"BackgroundMaps"
+{
+	1	"background_reaper_video"
+	2	"background_reaper_video"
+	3	"background_reaper_video"
+	4	"background_reaper_video"
+}

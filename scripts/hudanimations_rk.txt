@@ -1,0 +1,367 @@
+// The Reaper HUD - health / ammo feedback (loaded before hudanimations_tf.txt, so these win)
+
+// overheal: the card's glow in the team's colour (RK_HealthFlash, a team picture) breathes; the digits stay white
+event HudHealthBonusPulse
+{
+	Animate PlayerStatusHealthValue		FgColor	"RK_Text"	Linear 0.0 0.0
+	Animate RK_HealthFlash	Alpha	"150"	Linear 0.0 0.35
+	Animate RK_HealthFlash	Alpha	"30"	Linear 0.35 0.45
+	RunEvent HudHealthBonusPulseLoop	0.8
+}
+event HudHealthBonusPulseLoop
+{
+	RunEvent HudHealthBonusPulse 0.0
+}
+event HudHealthBonusPulseStop
+{
+	StopEvent HudHealthBonusPulse 0.0
+	StopEvent HudHealthBonusPulseLoop 0.0
+	Animate PlayerStatusHealthValue		FgColor	"RK_Text"	Linear 0.0 0.0
+	Animate RK_HealthFlash	Alpha	"0"	Linear 0.0 0.0
+}
+
+// low ammo: the digits flash amber, the card's hairline burns and LOW flickers over its label in the team's colour
+// (RK_AmmoFlash)
+event HudLowAmmoPulse
+{
+	Animate AmmoInClip		FgColor	"RK_Amber"	Linear 0.0 0.0
+	Animate AmmoNoClip		FgColor	"RK_Amber"	Linear 0.0 0.0
+	Animate RK_AmmoFlash	Alpha	"230"	Flicker 0.6 0.0 0.12
+	Animate RK_AmmoFlash	Alpha	"40"	Linear 0.15 0.2
+	Animate AmmoInClip		FgColor	"RK_Text"	Linear 0.2 0.15
+	Animate AmmoNoClip		FgColor	"RK_Text"	Linear 0.2 0.15
+	RunEvent HudLowAmmoPulseLoop	0.45
+}
+event HudLowAmmoPulseLoop
+{
+	RunEvent HudLowAmmoPulse 0.0
+}
+event HudLowAmmoPulseStop
+{
+	StopEvent HudLowAmmoPulse 0.0
+	StopEvent HudLowAmmoPulseLoop 0.0
+	Animate AmmoInClip		FgColor	"RK_Text"	Linear 0.0 0.0
+	Animate AmmoNoClip		FgColor	"RK_Text"	Linear 0.0 0.0
+	Animate RK_AmmoFlash	Alpha	"0"	Linear 0.0 0.0
+}
+
+// the top strip's slots (ingame.patch_matchstatus): the stock events slid the dead panel and the respawn seconds
+// 19-21 units down, past the bottom of our 20-unit slot; here they stay on it, the cross fading in
+event TeamStatus_PlayerDead
+{
+	SetVisible DeathPanel  0 0
+	SetVisible SkullPanel  1 0
+	SetVisible respawntime  1 0
+	Animate SkullPanel ypos 0 Linear 0 0
+	Animate respawntime ypos 1 Linear 0 0
+	Animate SkullPanel Alpha 0 Linear 0 0
+	Animate SkullPanel Alpha 255 Flicker 0.7 0 0.35
+}
+event TeamStatus_PlayerAlive
+{
+	SetVisible DeathPanel  0 0
+	SetVisible SkullPanel  0 0
+	SetVisible respawntime 0 0
+	Animate SkullPanel ypos 0 Linear 0 0
+	Animate respawntime ypos 1 Linear 0 0
+}
+
+
+// near death (under THRESHOLD): the Blackwall breaks through (tools/blackwall.py). Once on the way under: its
+// hit and a burst of its glyph strips; then Cyberpunk 2077's 1 s low-health cycle, three of them in turn so
+// the blocks and the jumps do not repeat every second
+event HudHealthDyingPulse
+{
+	PlaySound 0 "ui/rk/bw_lowhealth.wav"
+	Animate RK_BWStrip1	Alpha	"255"	Flicker 0.8 0.000 0.200
+	Animate RK_BWStrip1	Alpha	"0"	Linear 0.360 0.400
+	Animate RK_BWStrip2	Alpha	"255"	Flicker 0.8 0.000 0.200
+	Animate RK_BWStrip2	Alpha	"0"	Linear 0.420 0.400
+	Animate RK_BWStrip3	Alpha	"255"	Flicker 0.8 0.000 0.200
+	Animate RK_BWStrip3	Alpha	"0"	Linear 0.480 0.400
+	Animate RK_BWStrip4	Alpha	"255"	Flicker 0.8 0.000 0.200
+	Animate RK_BWStrip4	Alpha	"0"	Linear 0.540 0.400
+	Animate RK_BWStrip5	Alpha	"255"	Flicker 0.8 0.000 0.200
+	Animate RK_BWStrip5	Alpha	"0"	Linear 0.600 0.400
+	Animate RK_BWVig1	Alpha	"255"	Flicker 0.7 0.000 0.150
+	Animate RK_BWVig2	Alpha	"255"	Flicker 0.7 0.000 0.150
+	Animate RK_BWVig3	Alpha	"255"	Flicker 0.7 0.000 0.150
+	Animate RK_BWCodeL	Alpha	"120"	Linear 0.100 0.400
+	Animate RK_BWCodeR	Alpha	"120"	Linear 0.100 0.400
+	Animate RK_HealthKickR	Alpha	"230"	Linear 0.000 0.020
+	Animate RK_HealthKickR	Alpha	"0"	Linear 0.050 0.160
+	Animate RK_HealthKickC	Alpha	"200"	Linear 0.000 0.020
+	Animate RK_HealthKickC	Alpha	"0"	Linear 0.060 0.160
+	Animate PlayerStatusHealthValue	FgColor	"255 255 255 0"	Linear 0.000 0.000
+	Animate RK_HealthHot	FgColor	"255 255 255 255"	Linear 0.000 0.000
+	Animate PlayerStatusHealthValue	FgColor	"RK_Text"	Linear 0.120 0.120
+	Animate RK_HealthHot	FgColor	"255 255 255 0"	Linear 0.120 0.120
+	StopEvent RK_DyingA	0.0
+	StopEvent RK_DyingB	0.0
+	StopEvent RK_DyingC	0.0
+	Animate RK_BWGate	Alpha	"255"	Linear 0.000 0.000
+	Animate RK_BWGateCard	Alpha	"255"	Linear 0.000 0.000
+	RunEvent RK_DyingA	0.15
+}
+event RK_DyingA
+{
+	Animate RK_HealthDanger	Alpha	"255"	Linear 0.000 0.030
+	Animate RK_HealthDanger	Alpha	"130"	Linear 0.030 0.080
+	Animate RK_HealthDanger	Alpha	"60"	Linear 0.110 0.550
+	Animate RK_BWCard2	Alpha	"210"	Linear 0.094 0.000
+	Animate RK_BWCard2	Alpha	"0"	Linear 0.342 0.050
+	Animate RK_BWCard1	Alpha	"162"	Linear 0.521 0.000
+	Animate RK_BWCard1	Alpha	"0"	Linear 0.775 0.050
+	Animate RK_BWCard5	Alpha	"199"	Linear 0.390 0.000
+	Animate RK_BWCard5	Alpha	"0"	Linear 0.667 0.050
+	Animate RK_BWGateCard	xpos	"3"	Linear 0.000 0.000
+	Animate RK_BWGateCard	xpos	"0"	Linear 0.060 0.000
+	Animate RK_BWGateCard	xpos	"-3"	Linear 0.500 0.000
+	Animate RK_BWGateCard	xpos	"0"	Linear 0.560 0.000
+	Animate RK_BWVig1	Alpha	"255"	Linear 0.000 0.030
+	Animate RK_BWVig1	Alpha	"190"	Linear 0.060 0.300
+	Animate RK_BWVig1	xpos	"-4"	Linear 0.000 0.000
+	Animate RK_BWVig1	xpos	"-14"	Linear 0.250 0.000
+	Animate RK_BWVig1	xpos	"-17"	Linear 0.500 0.000
+	Animate RK_BWVig1	xpos	"-10"	Linear 0.750 0.000
+	Animate RK_BWVig2	Alpha	"255"	Linear 0.000 0.030
+	Animate RK_BWVig2	Alpha	"190"	Linear 0.060 0.300
+	Animate RK_BWVig2	xpos	"-19"	Linear 0.000 0.000
+	Animate RK_BWVig2	xpos	"-12"	Linear 0.250 0.000
+	Animate RK_BWVig2	xpos	"-20"	Linear 0.500 0.000
+	Animate RK_BWVig2	xpos	"-7"	Linear 0.750 0.000
+	Animate RK_BWVig3	Alpha	"255"	Linear 0.000 0.030
+	Animate RK_BWVig3	Alpha	"190"	Linear 0.060 0.300
+	Animate RK_BWVig3	xpos	"-16"	Linear 0.000 0.000
+	Animate RK_BWVig3	xpos	"-21"	Linear 0.250 0.000
+	Animate RK_BWVig3	xpos	"-21"	Linear 0.500 0.000
+	Animate RK_BWVig3	xpos	"-21"	Linear 0.750 0.000
+	Animate RK_BWBlock11	Alpha	"222"	Linear 0.617 0.020
+	Animate RK_BWBlock11	Alpha	"0"	Linear 0.875 0.258
+	Animate RK_BWBlock9	Alpha	"198"	Linear 0.798 0.020
+	Animate RK_BWBlock9	Alpha	"0"	Linear 1.064 0.266
+	Animate RK_BWBlock1	Alpha	"227"	Linear 0.196 0.020
+	Animate RK_BWBlock1	Alpha	"0"	Linear 0.362 0.166
+	Animate RK_BWBlock7	Alpha	"216"	Linear 0.809 0.020
+	Animate RK_BWBlock7	Alpha	"0"	Linear 1.187 0.378
+	Animate RK_BWBlock4	Alpha	"135"	Linear 0.712 0.020
+	Animate RK_BWBlock4	Alpha	"0"	Linear 0.979 0.267
+	Animate RK_BWBlock14	Alpha	"185"	Linear 0.158 0.020
+	Animate RK_BWBlock14	Alpha	"0"	Linear 0.556 0.398
+	Animate RK_BWStrip3	Alpha	"255"	Linear 0.683 0.000
+	Animate RK_BWStrip3	Alpha	"0"	Linear 0.783 0.000
+	RunEvent RK_DyingB	1.0
+}
+event RK_DyingB
+{
+	Animate RK_HealthDanger	Alpha	"255"	Linear 0.000 0.030
+	Animate RK_HealthDanger	Alpha	"130"	Linear 0.030 0.080
+	Animate RK_HealthDanger	Alpha	"60"	Linear 0.110 0.550
+	Animate RK_BWCard1	Alpha	"253"	Linear 0.289 0.000
+	Animate RK_BWCard1	Alpha	"0"	Linear 0.406 0.050
+	Animate RK_BWCard5	Alpha	"227"	Linear 0.536 0.000
+	Animate RK_BWCard5	Alpha	"0"	Linear 0.684 0.050
+	Animate RK_BWCard4	Alpha	"237"	Linear 0.170 0.000
+	Animate RK_BWCard4	Alpha	"0"	Linear 0.258 0.050
+	Animate RK_BWGateCard	xpos	"-2"	Linear 0.000 0.000
+	Animate RK_BWGateCard	xpos	"0"	Linear 0.060 0.000
+	Animate RK_BWGateCard	xpos	"3"	Linear 0.500 0.000
+	Animate RK_BWGateCard	xpos	"0"	Linear 0.560 0.000
+	Animate RK_BWVig1	Alpha	"255"	Linear 0.000 0.030
+	Animate RK_BWVig1	Alpha	"190"	Linear 0.060 0.300
+	Animate RK_BWVig1	xpos	"-6"	Linear 0.000 0.000
+	Animate RK_BWVig1	xpos	"-15"	Linear 0.250 0.000
+	Animate RK_BWVig1	xpos	"-9"	Linear 0.500 0.000
+	Animate RK_BWVig1	xpos	"-10"	Linear 0.750 0.000
+	Animate RK_BWVig2	Alpha	"255"	Linear 0.000 0.030
+	Animate RK_BWVig2	Alpha	"190"	Linear 0.060 0.300
+	Animate RK_BWVig2	xpos	"-10"	Linear 0.000 0.000
+	Animate RK_BWVig2	xpos	"-16"	Linear 0.250 0.000
+	Animate RK_BWVig2	xpos	"-13"	Linear 0.500 0.000
+	Animate RK_BWVig2	xpos	"-7"	Linear 0.750 0.000
+	Animate RK_BWVig3	Alpha	"255"	Linear 0.000 0.030
+	Animate RK_BWVig3	Alpha	"190"	Linear 0.060 0.300
+	Animate RK_BWVig3	xpos	"-12"	Linear 0.000 0.000
+	Animate RK_BWVig3	xpos	"-13"	Linear 0.250 0.000
+	Animate RK_BWVig3	xpos	"-17"	Linear 0.500 0.000
+	Animate RK_BWVig3	xpos	"-7"	Linear 0.750 0.000
+	Animate RK_BWBlock1	Alpha	"152"	Linear 0.360 0.020
+	Animate RK_BWBlock1	Alpha	"0"	Linear 0.725 0.365
+	Animate RK_BWBlock14	Alpha	"116"	Linear 0.476 0.020
+	Animate RK_BWBlock14	Alpha	"0"	Linear 0.647 0.171
+	Animate RK_BWBlock6	Alpha	"240"	Linear 0.150 0.020
+	Animate RK_BWBlock6	Alpha	"0"	Linear 0.302 0.152
+	Animate RK_BWBlock8	Alpha	"253"	Linear 0.434 0.020
+	Animate RK_BWBlock8	Alpha	"0"	Linear 0.833 0.400
+	Animate RK_BWBlock12	Alpha	"216"	Linear 0.155 0.020
+	Animate RK_BWBlock12	Alpha	"0"	Linear 0.523 0.368
+	Animate RK_BWBlock7	Alpha	"203"	Linear 0.624 0.020
+	Animate RK_BWBlock7	Alpha	"0"	Linear 0.996 0.372
+	Animate RK_BWStrip5	Alpha	"255"	Linear 0.430 0.000
+	Animate RK_BWStrip5	Alpha	"0"	Linear 0.530 0.000
+	RunEvent RK_DyingC	1.0
+}
+event RK_DyingC
+{
+	Animate RK_HealthDanger	Alpha	"255"	Linear 0.000 0.030
+	Animate RK_HealthDanger	Alpha	"130"	Linear 0.030 0.080
+	Animate RK_HealthDanger	Alpha	"60"	Linear 0.110 0.550
+	Animate RK_BWCard2	Alpha	"224"	Linear 0.733 0.000
+	Animate RK_BWCard2	Alpha	"0"	Linear 0.917 0.050
+	Animate RK_BWCard5	Alpha	"210"	Linear 0.052 0.000
+	Animate RK_BWCard5	Alpha	"0"	Linear 0.135 0.050
+	Animate RK_BWCard4	Alpha	"241"	Linear 0.207 0.000
+	Animate RK_BWCard4	Alpha	"0"	Linear 0.339 0.050
+	Animate RK_BWGateCard	xpos	"3"	Linear 0.000 0.000
+	Animate RK_BWGateCard	xpos	"0"	Linear 0.060 0.000
+	Animate RK_BWGateCard	xpos	"3"	Linear 0.500 0.000
+	Animate RK_BWGateCard	xpos	"0"	Linear 0.560 0.000
+	Animate RK_BWVig1	Alpha	"255"	Linear 0.000 0.030
+	Animate RK_BWVig1	Alpha	"190"	Linear 0.060 0.300
+	Animate RK_BWVig1	xpos	"-14"	Linear 0.000 0.000
+	Animate RK_BWVig1	xpos	"-11"	Linear 0.250 0.000
+	Animate RK_BWVig1	xpos	"-8"	Linear 0.500 0.000
+	Animate RK_BWVig1	xpos	"-19"	Linear 0.750 0.000
+	Animate RK_BWVig2	Alpha	"255"	Linear 0.000 0.030
+	Animate RK_BWVig2	Alpha	"190"	Linear 0.060 0.300
+	Animate RK_BWVig2	xpos	"-19"	Linear 0.000 0.000
+	Animate RK_BWVig2	xpos	"-11"	Linear 0.250 0.000
+	Animate RK_BWVig2	xpos	"-19"	Linear 0.500 0.000
+	Animate RK_BWVig2	xpos	"-8"	Linear 0.750 0.000
+	Animate RK_BWVig3	Alpha	"255"	Linear 0.000 0.030
+	Animate RK_BWVig3	Alpha	"190"	Linear 0.060 0.300
+	Animate RK_BWVig3	xpos	"-10"	Linear 0.000 0.000
+	Animate RK_BWVig3	xpos	"-15"	Linear 0.250 0.000
+	Animate RK_BWVig3	xpos	"-10"	Linear 0.500 0.000
+	Animate RK_BWVig3	xpos	"-21"	Linear 0.750 0.000
+	Animate RK_BWBlock11	Alpha	"178"	Linear 0.256 0.020
+	Animate RK_BWBlock11	Alpha	"0"	Linear 0.365 0.109
+	Animate RK_BWBlock13	Alpha	"209"	Linear 0.402 0.020
+	Animate RK_BWBlock13	Alpha	"0"	Linear 0.717 0.316
+	Animate RK_BWBlock2	Alpha	"211"	Linear 0.607 0.020
+	Animate RK_BWBlock2	Alpha	"0"	Linear 0.983 0.376
+	Animate RK_BWBlock3	Alpha	"144"	Linear 0.619 0.020
+	Animate RK_BWBlock3	Alpha	"0"	Linear 0.892 0.273
+	Animate RK_BWBlock10	Alpha	"144"	Linear 0.747 0.020
+	Animate RK_BWBlock10	Alpha	"0"	Linear 0.876 0.129
+	Animate RK_BWBlock1	Alpha	"221"	Linear 0.421 0.020
+	Animate RK_BWBlock1	Alpha	"0"	Linear 0.598 0.177
+	Animate RK_BWStrip5	Alpha	"255"	Linear 0.756 0.000
+	Animate RK_BWStrip5	Alpha	"0"	Linear 0.856 0.000
+	RunEvent RK_DyingA	1.0
+}
+// the stock loop: nothing runs it now (the first event of a name is the one the game plays: ours)
+event HudHealthDyingPulseLoop
+{
+}
+event HudHealthDyingPulseStop
+{
+	StopEvent HudHealthDyingPulse	0.0
+	StopEvent HudHealthDyingPulseLoop	0.0
+	StopEvent RK_DyingA	0.0
+	StopEvent RK_DyingB	0.0
+	StopEvent RK_DyingC	0.0
+	Animate PlayerStatusHealthValue	FgColor	"RK_Text"	Linear 0.000 0.000
+	Animate RK_HealthHot	FgColor	"255 255 255 0"	Linear 0.000 0.000
+	Animate RK_HealthDanger	Alpha	"0"	Linear 0.000 0.000
+	Animate RK_HealthKickR	Alpha	"0"	Linear 0.000 0.000
+	Animate RK_HealthKickC	Alpha	"0"	Linear 0.000 0.000
+	Animate RK_BWVig1	Alpha	"0"	Linear 0.000 0.350
+	Animate RK_BWVig1	xpos	"-14"	Linear 0.350 0.000
+	Animate RK_BWVig2	Alpha	"0"	Linear 0.000 0.350
+	Animate RK_BWVig2	xpos	"-14"	Linear 0.350 0.000
+	Animate RK_BWVig3	Alpha	"0"	Linear 0.000 0.350
+	Animate RK_BWVig3	xpos	"-14"	Linear 0.350 0.000
+	Animate RK_BWBlock1	Alpha	"0"	Linear 0.000 0.100
+	Animate RK_BWBlock2	Alpha	"0"	Linear 0.000 0.100
+	Animate RK_BWBlock3	Alpha	"0"	Linear 0.000 0.100
+	Animate RK_BWBlock4	Alpha	"0"	Linear 0.000 0.100
+	Animate RK_BWBlock5	Alpha	"0"	Linear 0.000 0.100
+	Animate RK_BWBlock6	Alpha	"0"	Linear 0.000 0.100
+	Animate RK_BWBlock7	Alpha	"0"	Linear 0.000 0.100
+	Animate RK_BWBlock8	Alpha	"0"	Linear 0.000 0.100
+	Animate RK_BWBlock9	Alpha	"0"	Linear 0.000 0.100
+	Animate RK_BWBlock10	Alpha	"0"	Linear 0.000 0.100
+	Animate RK_BWBlock11	Alpha	"0"	Linear 0.000 0.100
+	Animate RK_BWBlock12	Alpha	"0"	Linear 0.000 0.100
+	Animate RK_BWBlock13	Alpha	"0"	Linear 0.000 0.100
+	Animate RK_BWBlock14	Alpha	"0"	Linear 0.000 0.100
+	Animate RK_BWStrip1	Alpha	"0"	Linear 0.000 0.100
+	Animate RK_BWStrip2	Alpha	"0"	Linear 0.000 0.100
+	Animate RK_BWStrip3	Alpha	"0"	Linear 0.000 0.100
+	Animate RK_BWStrip4	Alpha	"0"	Linear 0.000 0.100
+	Animate RK_BWStrip5	Alpha	"0"	Linear 0.000 0.100
+	Animate RK_BWCodeL	Alpha	"0"	Linear 0.000 0.300
+	Animate RK_BWCodeR	Alpha	"0"	Linear 0.000 0.300
+	Animate RK_BWGate	Alpha	"0"	Linear 0.350 0.000
+	Animate RK_BWGateCard	Alpha	"0"	Linear 0.000 0.000
+	Animate RK_BWGateCard	xpos	"0"	Linear 0.000 0.000
+}
+event HudSpyDisguiseHide
+{
+	Animate PlayerStatusSpyOutlineImage	Position	"3 413"	Linear 0.000 0.200
+	Animate PlayerStatusSpyOutlineImage	Size	"55 55"	Linear 0.000 0.200
+	Animate PlayerStatusSpyOutlineImage	Alpha	"0"	Linear 0.200 0.100
+	Animate RK_BWGate	Alpha	"0"	Linear 0.000 0.000
+	Animate RK_BWGateCard	Alpha	"0"	Linear 0.000 0.000
+	Animate RK_BWGateCard	xpos	"0"	Linear 0.000 0.000
+}
+
+// ÜberCharge full: the Gateway (its sound once, its glyphs over the strip), then the strip breathes READY
+event HudMedicCharged
+{
+	PlaySound 0 "ui/rk/bw_uber.wav"
+	Animate RK_UberBreach	Alpha	"255"	Flicker 0.9 0.000 0.300
+	Animate RK_UberBreach	Alpha	"0"	Linear 0.600 0.600
+	Animate ChargeMeter	FgColor	"255 255 255 255"	Linear 0.000 0.100
+	Animate RK_UberReady	Alpha	"255"	Flicker 0.5 0.000 0.120
+	RunEvent RK_UberReadyLoop	1.2
+}
+event RK_UberReadyLoop
+{
+	Animate ChargeMeter	FgColor	"255 255 255 255"	Linear 0.000 0.100
+	Animate ChargeMeter	FgColor	"120 120 120 255"	Linear 0.300 0.300
+	Animate RK_UberReady	Alpha	"255"	Flicker 0.5 0.000 0.120
+	Animate RK_UberReady	Alpha	"150"	Linear 0.300 0.300
+	RunEvent RK_UberReadyLoop2	0.6
+}
+event RK_UberReadyLoop2
+{
+	RunEvent RK_UberReadyLoop	0.0
+}
+event HudMedicChargedLoop
+{
+}
+event HudMedicChargedStop
+{
+	StopEvent HudMedicCharged	0.0
+	StopEvent HudMedicChargedLoop	0.0
+	StopEvent RK_UberReadyLoop	0.0
+	StopEvent RK_UberReadyLoop2	0.0
+	Animate ChargeMeter	FgColor	"255 255 255 255"	Linear 0.000 0.000
+	Animate RK_UberReady	Alpha	"0"	Linear 0.000 0.000
+	Animate RK_UberBreach	Alpha	"0"	Linear 0.000 0.000
+}
+
+// casual / competitive matches move the chat to the stock spot on their own; keep it where the HUD puts it
+event CompetitiveGame_LowerChatWindow
+{
+	Animate HudChat ypos 225 Accel 0 0
+}
+event CompetitiveGame_RestoreChatWindow
+{
+	Animate HudChat ypos 225 Accel 0 0
+}
+
+// hitmarker (your damage on an enemy). Restarted through its own event: re-running DamagedPlayer on
+// every hit would stack its animations (the well-known hitmarker lag)
+event DamagedPlayer
+{
+	StopEvent RK_HitmarkerFlash 0.0
+	RunEvent RK_HitmarkerFlash 0.0
+}
+event RK_HitmarkerFlash
+{
+	Animate RK_Hitmarker	Alpha	"255"	Linear 0.0 0.0
+	Animate RK_Hitmarker	Alpha	"0"		Linear 0.08 0.22
+}

@@ -1,0 +1,6 @@
+"Modulate"
+{
+	"$basetexture"	"vgui/replay/thumbnails/rk/ig_uber_mul"
+	"$mod2x"	"0"
+	"$ignorez"	"1"
+}

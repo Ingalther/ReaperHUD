@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+rk_report.txt
+rk_killsound.txt
+rk_crosshair.txt
+rk_crosshair_pick.txt
+sound/*
+!sound/ui/
+sound/ui/*
+!sound/ui/rk/

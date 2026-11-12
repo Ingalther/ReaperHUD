@@ -1,0 +1,18 @@
+"UnlitGeneric"
+{
+	"$basetexture"	"vgui/replay/thumbnails/rk/bw_code"
+	"$translucent"	"1"
+	"$vertexcolor"	"1"
+	"$vertexalpha"	"1"
+	"$no_fullbright"	"1"
+	"$ignorez"	"1"
+	"Proxies"
+	{
+		"TextureScroll"
+		{
+			"texturescrollvar"	"$basetexturetransform"
+			"texturescrollrate"	"0.12"
+			"texturescrollangle"	"90"
+		}
+	}
+}
