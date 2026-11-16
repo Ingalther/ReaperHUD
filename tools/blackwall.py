@@ -653,10 +653,13 @@ def anims():
     # and a respawn resets its state (CTFHudPlayerHealth::Reset) without running HudHealthDyingPulseStop, so the loop
     # ran on at full health. A respawn does run HudSpyDisguiseHide (CTFHudPlayerClass::Reset), on the whole HUD: it
     # cannot stop the loop (that is the health panel's), but it shuts the gate. The stock event's own lines first.
+    # The same reset cancels every running animation (CHud::ResetHUD) first: a hitmarker mid-flash (a hit just as the
+    # round restarts, the end of warmup) stayed on screen at full alpha, so it is put out here too.
     L += ['event HudSpyDisguiseHide', '{', _a('PlayerStatusSpyOutlineImage', 'Position', '3 413', 0.0, 0.2),
           _a('PlayerStatusSpyOutlineImage', 'Size', '55 55', 0.0, 0.2),
           _a('PlayerStatusSpyOutlineImage', 'Alpha', 0, 0.2, 0.1),
-          _a(GATE, 'Alpha', 0, 0, 0), _a(GATE_CARD, 'Alpha', 0, 0, 0), _a(GATE_CARD, 'xpos', 0, 0, 0), '}']
+          _a(GATE, 'Alpha', 0, 0, 0), _a(GATE_CARD, 'Alpha', 0, 0, 0), _a(GATE_CARD, 'xpos', 0, 0, 0),
+          _a('RK_Hitmarker', 'Alpha', 0, 0, 0), '}']
     L += ['', '// ÜberCharge full: the Gateway (its sound once, its glyphs over the strip), then the strip breathes READY',
           'event HudMedicCharged', '{', '\tPlaySound 0 "ui/rk/bw_uber.wav"',
           _a('RK_UberBreach', 'Alpha', 255, 0.0, 0.3, 'Flicker 0.9'), _a('RK_UberBreach', 'Alpha', 0, 0.6, 0.6),

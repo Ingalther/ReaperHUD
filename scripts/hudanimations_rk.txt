@@ -305,6 +305,7 @@ event HudSpyDisguiseHide
 	Animate RK_BWGate	Alpha	"0"	Linear 0.000 0.000
 	Animate RK_BWGateCard	Alpha	"0"	Linear 0.000 0.000
 	Animate RK_BWGateCard	xpos	"0"	Linear 0.000 0.000
+	Animate RK_Hitmarker	Alpha	"0"	Linear 0.000 0.000
 }
 
 // ÜberCharge full: the Gateway (its sound once, its glyphs over the strip), then the strip breathes READY
