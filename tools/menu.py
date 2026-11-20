@@ -1283,6 +1283,47 @@ def teammenu(root):
         foot_button(blk, 0)
 
 
+def textwindow(root):
+    """The server's welcome message (MOTD) on joining: the stock chalkboard gives way to a terminal page, centred
+    on the screen. //  INCOMING TRANSMISSION over the server's title in large type and a crimson rule, the
+    server's text (plain or its web page) in a framed glass panel, CONTINUE under the panel's right edge; the menu
+    video behind. The text and the web page are the server's own."""
+    body = next(e[1] for e in root if isinstance(e[1], list))
+    for n in ('MenuBG', 'ShadedBar'):
+        blk = kv.find(body, n)
+        if blk is not None:
+            kv.setmany(blk, visible=0, wide=0, tall=0)
+    frame_dressing(body, video='centre')
+    x0, x1, py0, py1 = 300, 1620, 330, 860
+    put(body, 'RK_MotdLabel', {'ControlName': 'CExLabel', 'fieldName': 'RK_MotdLabel', 'xpos': cx(x0),
+                               'ypos': u(176), 'zpos': 3, 'wide': u(800), 'tall': 12, 'visible': 1, 'enabled': 1,
+                               'labelText': '//  INCOMING TRANSMISSION', 'font': 'RK_Mono12',
+                               'fgcolor': '224 26 46 255', 'textAlignment': 'west', 'mouseinputenabled': 0})
+    kv.setmany(kv.find(body, 'TFMessageTitle'), xpos=cx(x0), ypos=u(212), wide=u(x1 - x0), tall=u(90), zpos=3,
+               font='RK_MapTitle', allcaps=1, fgcolor=TEXT, textAlignment='west')
+    put(body, 'RK_MotdRule', {'ControlName': 'ImagePanel', 'fieldName': 'RK_MotdRule', 'xpos': cx(x0),
+                              'ypos': u(310), 'zpos': 3, 'wide': u(x1 - x0), 'tall': 1, 'visible': 1, 'enabled': 1,
+                              'fillcolor': '224 26 46 160', 'mouseinputenabled': 0})
+    put(body, 'RK_MotdPanel', {'ControlName': 'EditablePanel', 'fieldName': 'RK_MotdPanel', 'xpos': cx(x0),
+                               'ypos': u(py0), 'zpos': 1, 'wide': u(x1 - x0), 'tall': u(py1 - py0), 'visible': 1,
+                               'enabled': 1, 'paintborder': 1, 'border': 'RK_MMProfile',
+                               'bgcolor_override': '7 6 9 200', 'PaintBackgroundType': 0, 'mouseinputenabled': 0})
+    pad = 28
+    for n in ('TFTextMessage', 'HTMLMessage'):
+        blk = kv.find(body, n)
+        if blk is not None:
+            kv.setmany(blk, xpos=cx(x0 + pad), ypos=u(py0 + pad), zpos=4, wide=u(x1 - x0 - 2 * pad),
+                       tall=u(py1 - py0 - 2 * pad))
+    kv.setmany(kv.find(body, 'TFTextMessage'), font='RK_BriefBig', fgcolor='220 216 218 255')
+    ok = kv.find(body, 'ok')
+    if ok is not None:
+        foot_button(ok, 0)
+        kv.setmany(ok, xpos=cx(x1 - FOOT_W), ypos=u(py1 + 24))
+    hint = kv.find(body, 'OkIntroHintIcon')  # Steam Controller variant: the button glyph left of CONTINUE
+    if hint is not None:
+        kv.setmany(hint, xpos=cx(x1 - FOOT_W - 34), ypos=u(py1 + 24 + (FOOT_H - 25 * PX) / 2))
+
+
 def mapinfo(root):
     """Map briefing before spawning, centred on the screen: the label and the map's name over the crimson rule, its
     game mode under it, the description in a glass panel, the three buttons right under the panel; the menu video

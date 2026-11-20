@@ -1545,6 +1545,10 @@ def main():
         'resource/ui/hudtournament.res': patch_tournament,
         'resource/ui/targetid.res': ingame.patch_targetid,
         'resource/ui/mapinfomenu.res': menu.mapinfo,
+        'resource/ui/textwindow.res': menu.textwindow,
+        'resource/ui/textwindow_sc.res': menu.textwindow,
+        'resource/ui/textwindowcustomserver.res': menu.textwindow,
+        'resource/ui/textwindowcustomserver_sc.res': menu.textwindow,
         'resource/ui/spectator.res': patch_spectator,
         'resource/ui/spectatortournament.res': patch_spectator,
         'resource/ui/spectator_sc.res': patch_spectator,  # Steam Controller variant
