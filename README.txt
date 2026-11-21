@@ -1,5 +1,5 @@
 (DON'T FEAR) THE REAPER HUD  -  a red and black cyberpunk TF2 HUD
-Made by Ingalther  -  version 1.1
+Made by Ingalther  -  version 1.2
 ==============================================================
 
 Beyond the Wall (黒壁の彼方): black glass, crimson light and a broken signal, seen through the
