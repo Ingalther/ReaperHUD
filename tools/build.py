@@ -135,7 +135,11 @@ def retint(val):
 
 # ------------------------------------------------------------------ fonts
 # shipped with the HUD (resource/fonts, SIL OFL): the game loads them through CustomFontFiles
-SHIPPED_FONTS = ('Rajdhani-Bold.ttf', 'Rajdhani-SemiBold.ttf', 'ShareTechMono-Regular.ttf')
+SHIPPED_FONTS = ('Rajdhani-Bold.ttf', 'Rajdhani-SemiBold.ttf', 'ShareTechMono-Regular.ttf', 'Tektur-SemiBold.ttf')
+# the in-game text face: chat, kill feed, the scoreboard, voice menu, target ID. Tektur (shipped, SIL OFL; a static
+# 600 weight cut of the variable font, family "Tektur SemiBold"): cut corners, more cyberpunk than Bahnschrift,
+# and it has Cyrillic, so Russian names do not come out as boxes
+GAME_FACE = 'Tektur SemiBold'
 FONT_REMAP = {
     'tf2 build': 'Rajdhani',
     'tf2 secondary': 'Bahnschrift SemiCondensed',
@@ -149,6 +153,9 @@ CHAT_FONTS = ('ChatFont', 'ChatMiniFont')
 # lettering. "Default" is the scoreboard's player names (the game picks it in code), the others its stat lines, the
 # timer's sub line, target ID, hints, the spectator bar and the trackers. Only the face changes, each size stays
 STOCK_FACES = ('verdana', 'arial', 'tahoma')
+# the scoreboard's own stock fonts (TF2 Secondary, so Bahnschrift through FONT_REMAP): headers, team counts, names
+SCOREBOARD_FONTS = ('ScoreboardMedium', 'ScoreboardMediumSmall', 'ScoreboardSmall', 'ScoreboardTeamCountNew',
+                    'ScoreboardTeamName')
 STOCK_FACE_FONTS = ('Default', 'DefaultSmall', 'DefaultVerySmall', 'ScoreboardVerySmall', 'ScoreboardSmallest',
                     'ClockSubText', 'ClockSubTextSuddenDeath', 'ClockSubTextTiny', 'TargetID', 'HudHintText',
                     'SpectatorKeyHints', 'SpectatorVerySmall', 'PlayerPanelPlayerName', 'TFFontSmall',
@@ -188,8 +195,7 @@ RK_FONTS = {
     'RK_AmmoSmall': font_block('Rajdhani SemiBold', 15, 600),
     'RK_Damage': font_block('Rajdhani', 22, 700, outline=1),      # 0.9 (preview 05): the damage number larger
     'RK_DamageBig': font_block('Rajdhani', 30, 700, outline=1),
-    'RK_Killfeed': banded_font(('Bahnschrift SemiCondensed', 12, 600, 0),
-                               ('Bahnschrift SemiCondensed', 11, 600, 0), split=1440),
+    'RK_Killfeed': banded_font(('Tektur SemiBold', 12, 600, 0), ('Tektur SemiBold', 11, 600, 0), split=1440),
     'RK_Small': font_block('Bahnschrift SemiCondensed', 8, 400),
     'RK_Menu': font_block('Bahnschrift SemiCondensed', 12, 500),
     'RK_Title': font_block('Bahnschrift SemiBold Condensed', 20, 600),
@@ -344,14 +350,14 @@ def build_scheme(src_text):
                 for e in sub[1]:
                     if e[0].lower() == 'name' and e[1].lower() in FONT_REMAP:
                         e[1] = FONT_REMAP[e[1].lower()]
-    for name in CHAT_FONTS:
+    for name in CHAT_FONTS + SCOREBOARD_FONTS:
         for sub in kv.find(fonts, name) or []:
             if isinstance(sub[1], list):
-                kv.set(sub[1], 'name', 'Bahnschrift SemiCondensed')
+                kv.set(sub[1], 'name', GAME_FACE)
     for name in STOCK_FACE_FONTS:
         for sub in kv.find(fonts, name) or []:
             if isinstance(sub[1], list) and (kv.get(sub[1], 'name') or '').lower() in STOCK_FACES:
-                kv.set(sub[1], 'name', 'Bahnschrift SemiCondensed')
+                kv.set(sub[1], 'name', GAME_FACE)
     for name, blk in {**RK_FONTS, **ingame.FONTS, **menu.FONTS, **loadout.FONTS, **extras.FONTS}.items():
         kv.remove(fonts, name)
         fonts.append([name, blk, None])

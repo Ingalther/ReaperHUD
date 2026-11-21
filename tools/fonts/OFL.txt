@@ -14,6 +14,11 @@ ShareTechMono-Regular.ttf
 BarlowSemiCondensed-Regular.ttf, -Medium.ttf, -SemiBold.ttf, -Bold.ttf
   Copyright 2017 The Barlow Project Authors (https://github.com/jpt/barlow)
 
+Tektur-SemiBold.ttf
+  Copyright 2023 The Tektur Project Authors (https://www.github.com/hyvyys/Tektur)
+  A Modified Version: a static SemiBold (weight 600, width 100) instance of the variable font,
+  family renamed "Tektur SemiBold". Used in game for chat, kill feed, scoreboard and target ID.
+
 ReaperJPSubset-Medium.ttf, -Bold.ttf, -Black.ttf
   A Modified Version of Noto Sans JP (Medium, Bold, Black): cut down to the kana and the few kanji
   the HUD uses, and renamed "Reaper JP Subset".

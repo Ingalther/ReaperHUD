@@ -34,7 +34,8 @@ def u(px):
 # vgui asks Windows for a font whose cell (win ascent + descent) is the scheme's "tall", so a font's em is its cell
 # over this ratio; text sits in the middle of its label with the baseline `ascent` down the cell
 METRICS = {'Rajdhani': (1.276, 930 / 1276), 'Rajdhani SemiBold': (1.276, 930 / 1276),
-           'Share Tech Mono': (1.127, 885 / 1127), 'Bahnschrift SemiCondensed': (1.207, 0.8)}
+           'Share Tech Mono': (1.127, 885 / 1127), 'Bahnschrift SemiCondensed': (1.207, 0.8),
+           'Tektur SemiBold': (1.3, 0.769)}
 
 
 def em(family, tall):
@@ -69,19 +70,19 @@ FONTS = {
     'RK_UberNum': font_block('Rajdhani', 15, 700),            # the Über card's percent: 44 px           # counts on the meter strips: 19 px
     'RK_StripLabel': font_block('Share Tech Mono', 6, 400),   # the game's meter names: 12 px mono
     # target ID: its card is mostly see-through, so the lettering carries a shadow of its own
-    'RK_TidName': font_block('Bahnschrift SemiCondensed', 11, 600, dropshadow=1),   # the name: 20 px
+    'RK_TidName': font_block('Tektur SemiBold', 11, 600, dropshadow=1),   # the name: 20 px
     'RK_TidData': font_block('Share Tech Mono', 5, 400, dropshadow=1),              # its second line: 10 px mono
     'RK_TidHealth': font_block('Rajdhani', 15, 700, outline=1),        # the health chip's number: 26 px
-    # kill feed names: the condensed bold cut of Bahnschrift, 24 px, tighter and harder than the menu face. The HUD's
-    # own faces (Rajdhani, Share Tech Mono) have no Cyrillic, and names in it would come out as boxes
-    'RK_Feed': font_block('Bahnschrift SemiBold Condensed', 11, 700),
+    # kill feed names: Tektur (build.GAME_FACE), 24 px. Rajdhani and Share Tech Mono have no Cyrillic, and names in
+    # them would come out as boxes; Tektur does
+    'RK_Feed': font_block('Tektur SemiBold', 11, 600),
     'RK_Timer': font_block('Rajdhani', 18, 700),                      # round timer: 32 px
     'RK_TimerHalf': font_block('Rajdhani', 12, 700),                  # KOTH in a match: two times in one box
     'RK_TopScore': font_block('Rajdhani', 15, 700, outline=1),        # CTF scores in the timer box: 34 px
     'RK_SlotTime': font_block('Rajdhani', 7, 700, outline=1),         # respawn seconds on a teammate's slot
     'RK_Damage': font_block('Rajdhani', 14, 700, outline=1),          # damage numbers: 24 px
     'RK_DamageBig': font_block('Rajdhani', 17, 700, outline=1),       # 30 px
-    'ChatFont': font_block('Bahnschrift SemiCondensed', 11, 600, dropshadow=1),  # chat: 23 px with a shadow (17 read too small)
+    'ChatFont': font_block('Tektur SemiBold', 11, 600, dropshadow=1),  # chat: 23 px with a shadow (17 read too small)
 }
 import minmode  # noqa: E402  the MINMODE layout (cl_hud_minmode 1)
 FONTS.update(minmode.fonts(font_block))

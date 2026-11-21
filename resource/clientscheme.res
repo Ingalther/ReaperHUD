@@ -370,7 +370,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"12"
 				"weight"		"900"
 				"range"		"0x0000 0x017F"
@@ -378,7 +378,7 @@
 			}
 			"2"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"13" [$WIN32]
 				"tall"		"20" [$X360]
 				"weight"		"900"
@@ -387,7 +387,7 @@
 			}
 			"3"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"14"
 				"weight"		"900"
 				"range"		"0x0000 0x017F"
@@ -396,7 +396,7 @@
 			}
 			"4"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"20"
 				"weight"		"900"
 				"range"		"0x0000 0x017F"
@@ -405,7 +405,7 @@
 			}
 			"5"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"9"
 				"weight"		"900"
 				"range"		"0x0000 0x017F"
@@ -413,14 +413,14 @@
 			}
 			"6"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"12"
 				"range"		"0x0000 0x00FF"
 				"weight"		"900"
 			}
 			"7"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"12"
 				"range"		"0x0000 0x00FF"
 				"weight"		"800"
@@ -448,7 +448,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"12"
 				"weight"		"0"
 				"range"		"0x0000 0x017F"
@@ -456,7 +456,7 @@
 			}
 			"2"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"13"
 				"weight"		"0"
 				"range"		"0x0000 0x017F"
@@ -464,7 +464,7 @@
 			}
 			"3"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"14"
 				"weight"		"0"
 				"range"		"0x0000 0x017F"
@@ -473,7 +473,7 @@
 			}
 			"4"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"20"
 				"weight"		"0"
 				"range"		"0x0000 0x017F"
@@ -482,7 +482,7 @@
 			}
 			"5"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"9"
 				"weight"		"0"
 				"range"		"0x0000 0x017F"
@@ -490,7 +490,7 @@
 			}
 			"6"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"12"
 				"range"		"0x0000 0x00FF"
 				"weight"		"0"
@@ -500,7 +500,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"12"
 				"weight"		"0"
 				"range"		"0x0000 0x017F"
@@ -508,7 +508,7 @@
 			}
 			"2"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"12"
 				"weight"		"0"
 				"range"		"0x0000 0x017F"
@@ -516,7 +516,7 @@
 			}
 			"3"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"12"
 				"weight"		"0"
 				"range"		"0x0000 0x017F"
@@ -525,7 +525,7 @@
 			}
 			"4"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"14"
 				"weight"		"0"
 				"range"		"0x0000 0x017F"
@@ -534,7 +534,7 @@
 			}
 			"5"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"9"
 				"weight"		"0"
 				"range"		"0x0000 0x017F"
@@ -616,7 +616,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"6"
 				"weight"		"500"
 				"additive"		"0"
@@ -627,14 +627,14 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"12"
 				"weight"		"700"
 				"yres"		"480 599"
 			}
 			"2"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"13" [$WIN32]
 				"tall"		"23" [$X360]
 				"weight"		"700"
@@ -642,21 +642,21 @@
 			}
 			"3"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"14"
 				"weight"		"700"
 				"yres"		"768 1023"
 			}
 			"4"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"20"
 				"weight"		"700"
 				"yres"		"1024 1199"
 			}
 			"5"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"12"
 				"weight"		"700"
 				"antialias"		"1"
@@ -1113,7 +1113,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"8"
 				"weight"		"500"
 				"additive"		"0"
@@ -1124,7 +1124,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"9"
 				"weight"		"500"
 				"additive"		"0"
@@ -1135,7 +1135,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"8"
 				"tall_hidef"		"9"
 				"tall_lodef"		"10"
@@ -1148,7 +1148,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"8"
 				"tall_hidef"		"7"
 				"weight"		"500"
@@ -1271,7 +1271,7 @@
 			}
 			"2"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"28"
 				"weight"		"0"
 				"additive"		"1"
@@ -1388,7 +1388,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"13"
 				"tall_hidef"		"14"
 				"tall_lodef"		"17"
@@ -1458,7 +1458,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"6"
 				"weight"		"400"
 				"additive"		"0"
@@ -1469,7 +1469,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"8"
 				"tall_hidef"		"10"
 				"tall_lodef"		"14"
@@ -1482,7 +1482,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"10"
 				"tall_hidef"		"12"
 				"tall_lodef"		"14"
@@ -1495,7 +1495,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"14"
 				"weight"		"500"
 				"range"		"0x0000 0x007F"
@@ -1507,7 +1507,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"20"
 				"weight"		"500"
 				"range"		"0x0000 0x007F"
@@ -1519,7 +1519,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"20"
 				"tall_hidef"		"24"
 				"tall_lodef"		"24"
@@ -1533,7 +1533,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"14"
 				"weight"		"500"
 				"range"		"0x0000 0x007F"
@@ -1713,7 +1713,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"12"
 				"weight"		"700"
 				"yres"		"480 599"
@@ -1721,7 +1721,7 @@
 			}
 			"2"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"13"
 				"weight"		"700"
 				"yres"		"600 767"
@@ -1729,7 +1729,7 @@
 			}
 			"3"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"14"
 				"weight"		"700"
 				"yres"		"768 1023"
@@ -1737,7 +1737,7 @@
 			}
 			"4"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"20"
 				"weight"		"700"
 				"yres"		"1024 1199"
@@ -1745,7 +1745,7 @@
 			}
 			"5"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"24"
 				"weight"		"700"
 				"yres"		"1200 10000"
@@ -1756,7 +1756,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"10"
 				"weight"		"700"
 				"yres"		"480 599"
@@ -1764,7 +1764,7 @@
 			}
 			"2"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"10"
 				"weight"		"700"
 				"yres"		"600 767"
@@ -1772,7 +1772,7 @@
 			}
 			"3"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"13"
 				"weight"		"700"
 				"yres"		"768 1023"
@@ -1780,7 +1780,7 @@
 			}
 			"4"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"14"
 				"weight"		"700"
 				"yres"		"1024 1199"
@@ -1788,7 +1788,7 @@
 			}
 			"5"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"15"
 				"weight"		"700"
 				"yres"		"1200 10000"
@@ -1848,7 +1848,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"8"
 				"tall_hidef"		"10"
 				"tall_lodef"		"12"
@@ -1861,7 +1861,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"9"
 				"tall_hidef"		"10"
 				"tall_lodef"		"16"
@@ -1874,7 +1874,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"11" [!$OSX]
 				"tall"		"9" [$OSX]
 				"weight"		"800"
@@ -2046,7 +2046,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"7"
 				"weight"		"400"
 				"additive"		"0"
@@ -2208,7 +2208,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"7"
 				"weight"		"0"
 				"additive"		"1"
@@ -2219,7 +2219,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"7" [!$POSIX]
 				"tall"		"8" [$POSIX]
 				"weight"		"0"
@@ -2231,7 +2231,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"7" [!$POSIX]
 				"tall"		"8" [$POSIX]
 				"weight"		"0"
@@ -2242,7 +2242,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"7" [!$POSIX]
 				"tall"		"8" [$POSIX]
 				"weight"		"0"
@@ -2255,7 +2255,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"7"
 				"weight"		"0"
 				"antialias"		"1"
@@ -2903,7 +2903,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"12"
 				"weight"		"600"
 				"additive"		"0"
@@ -2915,7 +2915,7 @@
 			}
 			"2"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"15"
 				"weight"		"600"
 				"additive"		"0"
@@ -2927,7 +2927,7 @@
 			}
 			"3"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"18"
 				"weight"		"600"
 				"additive"		"0"
@@ -2939,7 +2939,7 @@
 			}
 			"4"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"19"
 				"weight"		"600"
 				"additive"		"0"
@@ -2951,7 +2951,7 @@
 			}
 			"5"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"20"
 				"weight"		"600"
 				"additive"		"0"
@@ -2963,7 +2963,7 @@
 			}
 			"6"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"22"
 				"weight"		"600"
 				"additive"		"0"
@@ -2975,7 +2975,7 @@
 			}
 			"7"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"22"
 				"weight"		"600"
 				"additive"		"0"
@@ -2987,7 +2987,7 @@
 			}
 			"8"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"24"
 				"weight"		"600"
 				"additive"		"0"
@@ -2999,7 +2999,7 @@
 			}
 			"9"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"26"
 				"weight"		"600"
 				"additive"		"0"
@@ -3011,7 +3011,7 @@
 			}
 			"10"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"26"
 				"weight"		"600"
 				"additive"		"0"
@@ -3023,7 +3023,7 @@
 			}
 			"11"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"27"
 				"weight"		"600"
 				"additive"		"0"
@@ -3035,7 +3035,7 @@
 			}
 			"12"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"30"
 				"weight"		"600"
 				"additive"		"0"
@@ -3047,7 +3047,7 @@
 			}
 			"13"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"33"
 				"weight"		"600"
 				"additive"		"0"
@@ -3059,7 +3059,7 @@
 			}
 			"14"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"37"
 				"weight"		"600"
 				"additive"		"0"
@@ -3071,7 +3071,7 @@
 			}
 			"15"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"50"
 				"weight"		"600"
 				"additive"		"0"
@@ -3451,7 +3451,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"11"
 				"weight"		"600"
 				"additive"		"0"
@@ -3493,9 +3493,9 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiBold Condensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"11"
-				"weight"		"700"
+				"weight"		"600"
 				"additive"		"0"
 				"antialias"		"1"
 				"italic"		"0"
@@ -3563,7 +3563,7 @@
 		{
 			"1"
 			{
-				"name"		"Bahnschrift SemiCondensed"
+				"name"		"Tektur SemiBold"
 				"tall"		"11"
 				"weight"		"600"
 				"additive"		"0"
@@ -7558,5 +7558,6 @@
 		"18"		"resource/fonts/Rajdhani-Bold.ttf"
 		"19"		"resource/fonts/Rajdhani-SemiBold.ttf"
 		"20"		"resource/fonts/ShareTechMono-Regular.ttf"
+		"21"		"resource/fonts/Tektur-SemiBold.ttf"
 	}
 }

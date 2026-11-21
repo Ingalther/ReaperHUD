@@ -28,7 +28,8 @@ UW = W / S
 FACES = {'rajdhani': ('Rajdhani-Bold.ttf', 1.276, 930 / 1276), 'rajdhani semibold': ('Rajdhani-SemiBold.ttf', 1.276, 930 / 1276),
          'share tech mono': ('ShareTechMono-Regular.ttf', 1.127, 885 / 1127),
          'bahnschrift semicondensed': ('BarlowSemiCondensed-SemiBold.ttf', 1.207, 0.8),
-         'bahnschrift semibold condensed': ('BarlowSemiCondensed-Bold.ttf', 1.207, 0.8)}
+         'bahnschrift semibold condensed': ('BarlowSemiCondensed-Bold.ttf', 1.207, 0.8),
+         'tektur semibold': ('Tektur-SemiBold.ttf', 1.3, 0.769)}
 THUMB = 'materials/vgui/replay/thumbnails/rk/'
 
 
