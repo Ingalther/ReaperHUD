@@ -65,7 +65,6 @@
 		"brighttext"		"0"
 		"font"		"RK_MapTitle"
 		"fgcolor"		"236 232 232 255"
-		"allcaps"		"1"
 	}
 	"TextMessage"
 	{
@@ -95,8 +94,8 @@
 		"image_up_arrow_mouseover"		"scroll_up_on"
 		"image_down_arrow"		"scroll_down_off"
 		"image_down_arrow_mouseover"		"scroll_down_on"
-		"image_line"		"ArmoryScrollbarWell"
-		"image_box"		"ArmoryScrollbarBox"
+		"image_line"		"replay/thumbnails/rk/blank"
+		"image_box"		"replay/thumbnails/rk/menu_item_red"
 	}
 	"HTMLMessage"
 	{

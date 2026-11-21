@@ -1302,7 +1302,8 @@ def textwindow(root):
                                'fgcolor': '224 26 46 255', 'textAlignment': 'west', 'mouseinputenabled': 0})
     # as tall as the map briefing's title: shorter than its font, the game cut the title to "WELCO..."
     kv.setmany(kv.find(body, 'TFMessageTitle'), xpos=cx(x0), ypos=u(170), wide=u(x1 - x0), tall=u(130), zpos=3,
-               font='RK_MapTitle', allcaps=1, fgcolor=TEXT, textAlignment='west')
+               font='RK_MapTitle', fgcolor=TEXT, textAlignment='west')  # no allcaps: the game sizes the title to
+    # its text before the caps, and the wider capitals were cut to "WELCO..."
     put(body, 'RK_MotdRule', {'ControlName': 'ImagePanel', 'fieldName': 'RK_MotdRule', 'xpos': cx(x0),
                               'ypos': u(310), 'zpos': 3, 'wide': u(x1 - x0), 'tall': 1, 'visible': 1, 'enabled': 1,
                               'fillcolor': '224 26 46 160', 'mouseinputenabled': 0})
@@ -1316,11 +1317,12 @@ def textwindow(root):
         if blk is not None:
             kv.setmany(blk, xpos=cx(x0 + pad), ypos=u(py0 + pad), zpos=4, wide=u(x1 - x0 - 2 * pad),
                        tall=u(py1 - py0 - 2 * pad))
-    # the text's scroll bar: the armory's plain arrows and well instead of the stock chalk drawings
+    # the text's scroll bar: the armory's plain arrows and a crimson box instead of the stock chalk drawings
     kv.setmany(kv.find(body, 'TFTextMessage'), font='RK_BriefBig', fgcolor='220 216 218 255',
                image_up_arrow='scroll_up_off', image_up_arrow_mouseover='scroll_up_on',
                image_down_arrow='scroll_down_off', image_down_arrow_mouseover='scroll_down_on',
-               image_line='ArmoryScrollbarWell', image_box='ArmoryScrollbarBox')
+               image_line=T + 'blank', image_box=T + 'menu_item_red')  # the armory's well and box are no
+    # materials outside the armory: they drew the missing-texture checks
     ok = kv.find(body, 'ok')
     if ok is not None:
         foot_button(ok, 0)
