@@ -515,25 +515,10 @@ def patch_health(root):
     body = kv.find(root, 'Resource/UI/HudPlayerHealth.res')
     kv.set(kv.find(body, 'HudPlayerHealth'), 'HealthDeathWarning', THRESHOLD)
     kv.remove(body, 'RK_EdgeDanger')             # the 0.6 edge glow: the vignette takes its place
-    # the screen's layers sit in one full-screen panel, the gate: the loop animates the layers, the gate's alpha
-    # decides whether any of it shows (see anims: a respawn has to be able to shut it)
-    gate = []
-    h = 480 // SLICES
-    for i in range(SLICES):
-        kv.add_block(gate, f'RK_BWVig{i + 1}', _img_panel(f'RK_BWVig{i + 1}', -SLIDE, i * h, f'f-{2 * SLIDE}', h,
-                                                           f'bw_vig{i + 1}', 0))
-    for name, x, w in CODE:
-        kv.add_block(gate, name, _img_panel(name, x, 0, w, 480, 'bw_code', 0))
-    for i, (_, x, y, w, h_) in enumerate(BLOCKS, 1):
-        kv.add_block(gate, f'RK_BWBlock{i}', _img_panel(f'RK_BWBlock{i}', x, y, w, h_, f'bw_block{(i - 1) % 4 + 1}', 1))
-    for i, (x, w) in enumerate(STRIPS, 1):
-        kv.add_block(gate, f'RK_BWStrip{i}', _img_panel(f'RK_BWStrip{i}', x, 0, w, 480, 'bw_glyphs', 1))
     for old in [k for k, v, _ in body if k.startswith('RK_BW')]:
         kv.remove(body, old)
-    kv.add_block(body, GATE, {'ControlName': 'EditablePanel', 'fieldName': GATE, 'xpos': 0, 'ypos': 0, 'zpos': 0,
-                              'wide': 'f0', 'tall': 480, 'visible': 1, 'enabled': 1, 'alpha': 0,
-                              'mouseinputenabled': 0, 'PaintBackgroundType': 0, 'paintbackground': 0})
-    kv.find(body, GATE).extend(gate)
+    # the screen's layers (the gate) live in HudPlayerClass.res (patch_class): players move the health panel to move
+    # their health card, and the layers moved and were cut off with it
     # the card's own glitch, in a second gate over the card (z 9, the danger tint's): the tint and torn strips of the
     # wall across the card, flickering with the loop. (The digits' copies are labels the game fills with the health,
     # which it only does for the health panel's own children: they stay outside and kick once.)
@@ -554,6 +539,31 @@ def patch_health(root):
     dx, dy, dw, dh = G.at(G.DIGITS)
     for name, ox, col in (('RK_HealthKickR', -3, '255 20 60 255'), ('RK_HealthKickC', 3, '0 214 255 255')):
         G.add(body, G.lbl(name, dx + ox, dy, dw, dh, '%Health%', 'RK_Digits', col, z=10, alpha=0))
+
+
+
+def patch_class(root):
+    """HudPlayerClass.res: the low-health screen's layers in one full-screen panel, the gate. The loop animates the
+    layers, the gate's alpha decides whether any of it shows (see anims: a respawn has to be able to shut it). Over the
+    class portrait, under the health panel (HudPlayerHealth draws over HudPlayerClass), as when it lived there."""
+    body = kv.find(root, 'Resource/UI/HudPlayerClass.res')
+    gate = []
+    h = 480 // SLICES
+    for i in range(SLICES):
+        kv.add_block(gate, f'RK_BWVig{i + 1}', _img_panel(f'RK_BWVig{i + 1}', -SLIDE, i * h, f'f-{2 * SLIDE}', h,
+                                                           f'bw_vig{i + 1}', 0))
+    for name, x, w in CODE:
+        kv.add_block(gate, name, _img_panel(name, x, 0, w, 480, 'bw_code', 0))
+    for i, (_, x, y, w, h_) in enumerate(BLOCKS, 1):
+        kv.add_block(gate, f'RK_BWBlock{i}', _img_panel(f'RK_BWBlock{i}', x, y, w, h_, f'bw_block{(i - 1) % 4 + 1}', 1))
+    for i, (x, w) in enumerate(STRIPS, 1):
+        kv.add_block(gate, f'RK_BWStrip{i}', _img_panel(f'RK_BWStrip{i}', x, 0, w, 480, 'bw_glyphs', 1))
+    for old in [k for k, v, _ in body if k.startswith('RK_BW')]:
+        kv.remove(body, old)
+    kv.add_block(body, GATE, {'ControlName': 'EditablePanel', 'fieldName': GATE, 'xpos': 0, 'ypos': 0, 'zpos': 50,
+                              'wide': 'f0', 'tall': 480, 'visible': 1, 'enabled': 1, 'alpha': 0,
+                              'mouseinputenabled': 0, 'PaintBackgroundType': 0, 'paintbackground': 0})
+    kv.find(body, GATE).extend(gate)
 
 
 def patch_uber(root):
