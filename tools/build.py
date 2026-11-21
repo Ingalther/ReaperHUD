@@ -1289,6 +1289,32 @@ event RK_HitmarkerFlash
 }
 '''
 
+ANIMS_MENU = r'''
+// voice / build menus (HudMenu): slide in from the left on open, slide back out and fade on close
+event MenuOpen
+{
+	StopEvent MenuClose 0.0
+	Animate HudMenu xpos			"-40"		Linear 0.0 0.0
+	Animate HudMenu xpos			"0"			Deaccel 0.0 0.18
+	Animate HudMenu Alpha			"255"		Linear 0.0 0.12
+	Animate HudMenu SelectionAlpha	"255"		Linear 0.0 0.12
+	Animate HudMenu FgColor			"FgColor"	Linear 0.0 0.12
+	Animate HudMenu MenuColor		"MenuColor"	Linear 0.0 0.12
+	Animate HudMenu ItemColor		"ItemColor"	Linear 0.0 0.12
+	Animate HudMenu TextScan		"1"			Linear 0.0 0.12
+	Animate HudMenu Blur			"1"			Linear 0.0 0.01
+}
+event MenuClose
+{
+	Animate HudMenu xpos			"-40"		Accel 0.0 0.16
+	Animate HudMenu Alpha			"0"			Linear 0.0 0.16
+	Animate HudMenu SelectionAlpha	"0"			Linear 0.0 0.16
+	Animate HudMenu FgColor			"0 0 0 0"	Linear 0.0 0.16
+	Animate HudMenu MenuColor		"0 0 0 0"	Linear 0.0 0.16
+	Animate HudMenu ItemColor		"0 0 0 0"	Linear 0.0 0.16
+}
+'''
+
 # ------------------------------------------------------------------ respawn card, menus, objectives
 SPEC_HINTS = ('ClassOrTeamLabel', 'SwitchCamModeKeyLabel', 'SwitchCamModeLabel', 'CycleTargetFwdKeyLabel',
               'CycleTargetFwdLabel', 'CycleTargetRevKeyLabel', 'CycleTargetRevLabel', 'TipLabel')
@@ -1648,7 +1674,7 @@ def main():
     os.makedirs(os.path.join(OUT, 'resource', 'fonts'), exist_ok=True)
     for f in SHIPPED_FONTS + ('OFL.txt',):
         shutil.copy(os.path.join(HERE, 'fonts', f), os.path.join(OUT, 'resource', 'fonts', f))
-    write(os.path.join(OUT, 'scripts/hudanimations_rk.txt'), ANIMS + blackwall.ANIMS + ingame.CHAT_ANIMS + ANIMS_HITMARKER)
+    write(os.path.join(OUT, 'scripts/hudanimations_rk.txt'), ANIMS + blackwall.ANIMS + ingame.CHAT_ANIMS + ANIMS_HITMARKER + ANIMS_MENU)
     write(os.path.join(OUT, 'scripts/hudanimations_manifest.txt'),
           'hudanimations_manifest\n{\n\t"file"\t\t"scripts/hudanimations.txt"\n'
           '\t"file"\t\t"scripts/hudanimations_rk.txt"\n\t"file"\t\t"scripts/hudanimations_tf.txt"\n}\n')

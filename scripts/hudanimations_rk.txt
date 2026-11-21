@@ -366,3 +366,27 @@ event RK_HitmarkerFlash
 	Animate RK_Hitmarker	Alpha	"255"	Linear 0.0 0.0
 	Animate RK_Hitmarker	Alpha	"0"		Linear 0.08 0.22
 }
+
+// voice / build menus (HudMenu): slide in from the left on open, slide back out and fade on close
+event MenuOpen
+{
+	StopEvent MenuClose 0.0
+	Animate HudMenu xpos			"-40"		Linear 0.0 0.0
+	Animate HudMenu xpos			"0"			Deaccel 0.0 0.18
+	Animate HudMenu Alpha			"255"		Linear 0.0 0.12
+	Animate HudMenu SelectionAlpha	"255"		Linear 0.0 0.12
+	Animate HudMenu FgColor			"FgColor"	Linear 0.0 0.12
+	Animate HudMenu MenuColor		"MenuColor"	Linear 0.0 0.12
+	Animate HudMenu ItemColor		"ItemColor"	Linear 0.0 0.12
+	Animate HudMenu TextScan		"1"			Linear 0.0 0.12
+	Animate HudMenu Blur			"1"			Linear 0.0 0.01
+}
+event MenuClose
+{
+	Animate HudMenu xpos			"-40"		Accel 0.0 0.16
+	Animate HudMenu Alpha			"0"			Linear 0.0 0.16
+	Animate HudMenu SelectionAlpha	"0"			Linear 0.0 0.16
+	Animate HudMenu FgColor			"0 0 0 0"	Linear 0.0 0.16
+	Animate HudMenu MenuColor		"0 0 0 0"	Linear 0.0 0.16
+	Animate HudMenu ItemColor		"0 0 0 0"	Linear 0.0 0.16
+}
