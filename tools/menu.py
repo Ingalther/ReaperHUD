@@ -494,7 +494,8 @@ def mainmenu(root, hud_settings_popup):
     title = kv.find(kv.find(body, 'Notifications_Panel') or [], 'Notifications_TitleLabel')
     if title is not None:  # stock draws it dark for the tan bubble; the panel is black glass now
         kv.set(title, 'fgcolor', TEXT)
-    kv.setmany(kv.find(body, 'Notifications_Panel'), xpos=u(CHIP_X), ypos=u(CHIP_Y) - 150)
+    # right of the menu column (it covered REPLAYS and HUD SETTINGS at the column's foot), its foot over the chips
+    kv.setmany(kv.find(body, 'Notifications_Panel'), xpos=u(640), ypos=u(CHIP_Y) - 150)
     for n in ('BackgroundFooter', 'FooterLine'):
         kv.setmany(kv.find(body, n), visible=0, wide=0, tall=0)
     # credit, bottom right: its right edge 1864 px across, centred on y 1050
@@ -1296,10 +1297,11 @@ def textwindow(root):
     frame_dressing(body, video='centre')
     x0, x1, py0, py1 = 300, 1620, 330, 860
     put(body, 'RK_MotdLabel', {'ControlName': 'CExLabel', 'fieldName': 'RK_MotdLabel', 'xpos': cx(x0),
-                               'ypos': u(176), 'zpos': 3, 'wide': u(800), 'tall': 12, 'visible': 1, 'enabled': 1,
+                               'ypos': u(150), 'zpos': 3, 'wide': u(800), 'tall': 12, 'visible': 1, 'enabled': 1,
                                'labelText': '//  INCOMING TRANSMISSION', 'font': 'RK_Mono12',
                                'fgcolor': '224 26 46 255', 'textAlignment': 'west', 'mouseinputenabled': 0})
-    kv.setmany(kv.find(body, 'TFMessageTitle'), xpos=cx(x0), ypos=u(212), wide=u(x1 - x0), tall=u(90), zpos=3,
+    # as tall as the map briefing's title: shorter than its font, the game cut the title to "WELCO..."
+    kv.setmany(kv.find(body, 'TFMessageTitle'), xpos=cx(x0), ypos=u(170), wide=u(x1 - x0), tall=u(130), zpos=3,
                font='RK_MapTitle', allcaps=1, fgcolor=TEXT, textAlignment='west')
     put(body, 'RK_MotdRule', {'ControlName': 'ImagePanel', 'fieldName': 'RK_MotdRule', 'xpos': cx(x0),
                               'ypos': u(310), 'zpos': 3, 'wide': u(x1 - x0), 'tall': 1, 'visible': 1, 'enabled': 1,
@@ -1314,11 +1316,20 @@ def textwindow(root):
         if blk is not None:
             kv.setmany(blk, xpos=cx(x0 + pad), ypos=u(py0 + pad), zpos=4, wide=u(x1 - x0 - 2 * pad),
                        tall=u(py1 - py0 - 2 * pad))
-    kv.setmany(kv.find(body, 'TFTextMessage'), font='RK_BriefBig', fgcolor='220 216 218 255')
+    # the text's scroll bar: the armory's plain arrows and well instead of the stock chalk drawings
+    kv.setmany(kv.find(body, 'TFTextMessage'), font='RK_BriefBig', fgcolor='220 216 218 255',
+               image_up_arrow='scroll_up_off', image_up_arrow_mouseover='scroll_up_on',
+               image_down_arrow='scroll_down_off', image_down_arrow_mouseover='scroll_down_on',
+               image_line='ArmoryScrollbarWell', image_box='ArmoryScrollbarBox')
     ok = kv.find(body, 'ok')
     if ok is not None:
         foot_button(ok, 0)
         kv.setmany(ok, xpos=cx(x1 - FOOT_W), ypos=u(py1 + 24))
+        # the frame under it, always drawn: the button's own border showed only after the pointer had been on it
+        put(body, 'RK_MotdOkFrame', {'ControlName': 'EditablePanel', 'fieldName': 'RK_MotdOkFrame',
+                                     'xpos': cx(x1 - FOOT_W), 'ypos': u(py1 + 24), 'zpos': 7, 'wide': u(FOOT_W),
+                                     'tall': u(FOOT_H), 'visible': 1, 'enabled': 1, 'paintborder': 1,
+                                     'border': 'RK_Foot', 'mouseinputenabled': 0})
     hint = kv.find(body, 'OkIntroHintIcon')  # Steam Controller variant: the button glyph left of CONTINUE
     if hint is not None:
         kv.setmany(hint, xpos=cx(x1 - FOOT_W - 34), ypos=u(py1 + 24 + (FOOT_H - 25 * PX) / 2))

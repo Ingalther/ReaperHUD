@@ -3133,7 +3133,7 @@
 	{
 		"ControlName"		"EditablePanel"
 		"fieldName"		"Notifications_Panel"
-		"xpos"		"27"
+		"xpos"		"284"
 		"ypos"		"293"
 		"zpos"		"10"
 		"wide"		"210"
