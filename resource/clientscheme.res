@@ -370,7 +370,7 @@
 		{
 			"1"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"12"
 				"weight"		"900"
 				"range"		"0x0000 0x017F"
@@ -378,7 +378,7 @@
 			}
 			"2"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"13" [$WIN32]
 				"tall"		"20" [$X360]
 				"weight"		"900"
@@ -387,7 +387,7 @@
 			}
 			"3"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"14"
 				"weight"		"900"
 				"range"		"0x0000 0x017F"
@@ -396,7 +396,7 @@
 			}
 			"4"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"20"
 				"weight"		"900"
 				"range"		"0x0000 0x017F"
@@ -405,7 +405,7 @@
 			}
 			"5"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"9"
 				"weight"		"900"
 				"range"		"0x0000 0x017F"
@@ -413,14 +413,14 @@
 			}
 			"6"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"12"
 				"range"		"0x0000 0x00FF"
 				"weight"		"900"
 			}
 			"7"
 			{
-				"name"		"Arial"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"12"
 				"range"		"0x0000 0x00FF"
 				"weight"		"800"
@@ -448,7 +448,7 @@
 		{
 			"1"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"12"
 				"weight"		"0"
 				"range"		"0x0000 0x017F"
@@ -456,7 +456,7 @@
 			}
 			"2"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"13"
 				"weight"		"0"
 				"range"		"0x0000 0x017F"
@@ -464,7 +464,7 @@
 			}
 			"3"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"14"
 				"weight"		"0"
 				"range"		"0x0000 0x017F"
@@ -473,7 +473,7 @@
 			}
 			"4"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"20"
 				"weight"		"0"
 				"range"		"0x0000 0x017F"
@@ -482,7 +482,7 @@
 			}
 			"5"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"9"
 				"weight"		"0"
 				"range"		"0x0000 0x017F"
@@ -490,7 +490,7 @@
 			}
 			"6"
 			{
-				"name"		"Arial"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"12"
 				"range"		"0x0000 0x00FF"
 				"weight"		"0"
@@ -500,7 +500,7 @@
 		{
 			"1"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"12"
 				"weight"		"0"
 				"range"		"0x0000 0x017F"
@@ -508,7 +508,7 @@
 			}
 			"2"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"12"
 				"weight"		"0"
 				"range"		"0x0000 0x017F"
@@ -516,7 +516,7 @@
 			}
 			"3"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"12"
 				"weight"		"0"
 				"range"		"0x0000 0x017F"
@@ -525,7 +525,7 @@
 			}
 			"4"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"14"
 				"weight"		"0"
 				"range"		"0x0000 0x017F"
@@ -534,7 +534,7 @@
 			}
 			"5"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"9"
 				"weight"		"0"
 				"range"		"0x0000 0x017F"
@@ -616,7 +616,7 @@
 		{
 			"1"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"6"
 				"weight"		"500"
 				"additive"		"0"
@@ -627,14 +627,14 @@
 		{
 			"1"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"12"
 				"weight"		"700"
 				"yres"		"480 599"
 			}
 			"2"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"13" [$WIN32]
 				"tall"		"23" [$X360]
 				"weight"		"700"
@@ -642,21 +642,21 @@
 			}
 			"3"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"14"
 				"weight"		"700"
 				"yres"		"768 1023"
 			}
 			"4"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"20"
 				"weight"		"700"
 				"yres"		"1024 1199"
 			}
 			"5"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"12"
 				"weight"		"700"
 				"antialias"		"1"
@@ -1113,7 +1113,7 @@
 		{
 			"1"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"8"
 				"weight"		"500"
 				"additive"		"0"
@@ -1124,7 +1124,7 @@
 		{
 			"1"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"9"
 				"weight"		"500"
 				"additive"		"0"
@@ -1135,7 +1135,7 @@
 		{
 			"1"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"8"
 				"tall_hidef"		"9"
 				"tall_lodef"		"10"
@@ -1148,7 +1148,7 @@
 		{
 			"1"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"8"
 				"tall_hidef"		"7"
 				"weight"		"500"
@@ -1271,7 +1271,7 @@
 			}
 			"2"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"28"
 				"weight"		"0"
 				"additive"		"1"
@@ -1388,7 +1388,7 @@
 		{
 			"1"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"13"
 				"tall_hidef"		"14"
 				"tall_lodef"		"17"
@@ -1458,7 +1458,7 @@
 		{
 			"1"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"6"
 				"weight"		"400"
 				"additive"		"0"
@@ -1469,7 +1469,7 @@
 		{
 			"1"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"8"
 				"tall_hidef"		"10"
 				"tall_lodef"		"14"
@@ -1713,7 +1713,7 @@
 		{
 			"1"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"12"
 				"weight"		"700"
 				"yres"		"480 599"
@@ -1721,7 +1721,7 @@
 			}
 			"2"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"13"
 				"weight"		"700"
 				"yres"		"600 767"
@@ -1729,7 +1729,7 @@
 			}
 			"3"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"14"
 				"weight"		"700"
 				"yres"		"768 1023"
@@ -1737,7 +1737,7 @@
 			}
 			"4"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"20"
 				"weight"		"700"
 				"yres"		"1024 1199"
@@ -1745,7 +1745,7 @@
 			}
 			"5"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"24"
 				"weight"		"700"
 				"yres"		"1200 10000"
@@ -1848,7 +1848,7 @@
 		{
 			"1"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"8"
 				"tall_hidef"		"10"
 				"tall_lodef"		"12"
@@ -1861,7 +1861,7 @@
 		{
 			"1"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"9"
 				"tall_hidef"		"10"
 				"tall_lodef"		"16"
@@ -1874,7 +1874,7 @@
 		{
 			"1"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"11" [!$OSX]
 				"tall"		"9" [$OSX]
 				"weight"		"800"
@@ -2046,7 +2046,7 @@
 		{
 			"1"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"7"
 				"weight"		"400"
 				"additive"		"0"
@@ -2208,7 +2208,7 @@
 		{
 			"1"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"7"
 				"weight"		"0"
 				"additive"		"1"
@@ -2219,7 +2219,7 @@
 		{
 			"1"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"7" [!$POSIX]
 				"tall"		"8" [$POSIX]
 				"weight"		"0"
@@ -2231,7 +2231,7 @@
 		{
 			"1"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"7" [!$POSIX]
 				"tall"		"8" [$POSIX]
 				"weight"		"0"
@@ -2242,7 +2242,7 @@
 		{
 			"1"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"7" [!$POSIX]
 				"tall"		"8" [$POSIX]
 				"weight"		"0"
@@ -2255,7 +2255,7 @@
 		{
 			"1"
 			{
-				"name"		"Verdana"
+				"name"		"Bahnschrift SemiCondensed"
 				"tall"		"7"
 				"weight"		"0"
 				"antialias"		"1"
@@ -3564,7 +3564,7 @@
 			"1"
 			{
 				"name"		"Bahnschrift SemiCondensed"
-				"tall"		"9"
+				"tall"		"11"
 				"weight"		"600"
 				"additive"		"0"
 				"antialias"		"1"

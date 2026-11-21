@@ -81,7 +81,7 @@ FONTS = {
     'RK_SlotTime': font_block('Rajdhani', 7, 700, outline=1),         # respawn seconds on a teammate's slot
     'RK_Damage': font_block('Rajdhani', 14, 700, outline=1),          # damage numbers: 24 px
     'RK_DamageBig': font_block('Rajdhani', 17, 700, outline=1),       # 30 px
-    'ChatFont': font_block('Bahnschrift SemiCondensed', 9, 600, dropshadow=1),   # chat: 17 px with a shadow
+    'ChatFont': font_block('Bahnschrift SemiCondensed', 11, 600, dropshadow=1),  # chat: 23 px with a shadow (17 read too small)
 }
 import minmode  # noqa: E402  the MINMODE layout (cl_hud_minmode 1)
 FONTS.update(minmode.fonts(font_block))
@@ -1536,9 +1536,9 @@ def patch_matchstatus(root):
     status = kv.find(body, 'TeamStatus')
     if status is None:
         return
-    # six a side: 40 px slots 6 px apart either side of the timer box, (612..882) and (1032..1302) px. A full 12 a
+    # six a side: 40 px slots 6 px apart either side of the timer box, (618..888) and (1032..1302) px. A full 12 a
     # side squeezes them to fit (the game's own rule), as the stock strip does
-    kv.setmany(status, max_size=SLOT[0], **{'6v6_gap': 2, '12v12_gap': 1}, team1_base_x='c-35', team2_base_x='c32',
+    kv.setmany(status, max_size=SLOT[0], **{'6v6_gap': 2, '12v12_gap': 1}, team1_base_x='c-32', team2_base_x='c32',
                team1_max_expand=133, team2_max_expand=133)
     pp = kv.find(status, 'playerpanels_kv')
     if pp is None:

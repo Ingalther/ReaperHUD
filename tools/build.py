@@ -145,6 +145,16 @@ FONT_REMAP = {
 # FONT_REMAP leaves Verdana alone, and these stock fonts are Verdana on every screen of 600+ lines: the chat kept
 # the stock look at 900p / 1080p
 CHAT_FONTS = ('ChatFont', 'ChatMiniFont')
+# the rest of the in-game text the game draws in Verdana / Arial / Tahoma: players said the scoreboard kept the classic
+# lettering. "Default" is the scoreboard's player names (the game picks it in code), the others its stat lines, the
+# timer's sub line, target ID, hints, the spectator bar and the trackers. Only the face changes, each size stays
+STOCK_FACES = ('verdana', 'arial', 'tahoma')
+STOCK_FACE_FONTS = ('Default', 'DefaultSmall', 'DefaultVerySmall', 'ScoreboardVerySmall', 'ScoreboardSmallest',
+                    'ClockSubText', 'ClockSubTextSuddenDeath', 'ClockSubTextTiny', 'TargetID', 'HudHintText',
+                    'SpectatorKeyHints', 'SpectatorVerySmall', 'PlayerPanelPlayerName', 'TFFontSmall',
+                    'TFFontMedium', 'GoalText', 'ItemTrackerScore_InGame', 'AchievementTracker_Desc',
+                    'QuestObjectiveTracker_Desc', 'QuestObjectiveTracker_DescBlur', 'QuestObjectiveTracker_DescGlow',
+                    'HudNumbers', 'InstructionalText')
 
 
 def font_block(name, tall, weight=400, italic=0, outline=0, dropshadow=0, antialias=1):
@@ -337,6 +347,10 @@ def build_scheme(src_text):
     for name in CHAT_FONTS:
         for sub in kv.find(fonts, name) or []:
             if isinstance(sub[1], list):
+                kv.set(sub[1], 'name', 'Bahnschrift SemiCondensed')
+    for name in STOCK_FACE_FONTS:
+        for sub in kv.find(fonts, name) or []:
+            if isinstance(sub[1], list) and (kv.get(sub[1], 'name') or '').lower() in STOCK_FACES:
                 kv.set(sub[1], 'name', 'Bahnschrift SemiCondensed')
     for name, blk in {**RK_FONTS, **ingame.FONTS, **menu.FONTS, **loadout.FONTS, **extras.FONTS}.items():
         kv.remove(fonts, name)
