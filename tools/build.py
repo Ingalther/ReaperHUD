@@ -1290,10 +1290,12 @@ event RK_HitmarkerFlash
 '''
 
 ANIMS_MENU = r'''
-// voice / build menus (HudMenu): slide in from the left on open, slide back out and fade on close
+// voice / build menus (HudMenu): slide in from the left on open, slide back out and fade on close.
+// Sits a little higher than stock so its bottom lines clear the chat
 event MenuOpen
 {
 	StopEvent MenuClose 0.0
+	Animate HudMenu ypos			"-30"		Linear 0.0 0.0
 	Animate HudMenu xpos			"-40"		Linear 0.0 0.0
 	Animate HudMenu xpos			"0"			Deaccel 0.0 0.18
 	Animate HudMenu Alpha			"255"		Linear 0.0 0.12
