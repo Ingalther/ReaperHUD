@@ -13,6 +13,7 @@ re-skinned through the scheme and patched where the layout changes. Only files t
 """
 import colorsys
 import json
+import copy
 import os
 import re
 import shutil
@@ -296,6 +297,44 @@ def retint_scheme(src_text):
     base = kv.find(scheme, 'BaseSettings')
     if base is not None:
         kv.setmany(base, **{'Tooltip.TextColor': '236 232 232 255', 'Tooltip.BgColor': '12 12 14 240'})
+    return kv.dump(root) + '\n'
+
+
+# The chat (its history, typing line, scroll bar, filters) reads resource/chatscheme.res, not clientscheme.res: what
+# the chat needs from the HUD's scheme is copied over (its fonts, the history well's frame) and its colours set here
+CHAT_SCHEME_COLORS = {
+    'Chat.TypingText': '236 232 232 255',
+    'TextEntry.TextColor': '236 232 232 255', 'TextEntry.BgColor': '4 4 6 200', 'TextEntry.CursorColor': '224 26 46 255',
+    'TextEntry.SelectedBgColor': '52 6 14 255', 'TextEntry.SelectedTextColor': '236 232 232 255',
+    'TextEntry.FocusEdgeColor': '0 0 0 0',
+    'ScrollBarButton.FgColor': '224 26 46 255', 'ScrollBarButton.BgColor': '20 20 24 200',
+    'ScrollBarButton.ArmedFgColor': '255 52 76 255', 'ScrollBarButton.ArmedBgColor': '52 6 14 220',
+    'ScrollBarButton.DepressedFgColor': '255 255 255 255', 'ScrollBarButton.DepressedBgColor': '160 18 34 255',
+    'ScrollBarSlider.FgColor': '224 26 46 255', 'ScrollBarSlider.BgColor': '20 20 24 200',
+    'CheckButton.TextColor': '236 232 232 255', 'CheckButton.SelectedTextColor': '255 255 255 255',
+    'CheckButton.BgColor': '0 0 0 120', 'CheckButton.Border1': '138 132 138 255', 'CheckButton.Border2': '138 132 138 255',
+    'CheckButton.Check': '224 26 46 255', 'CheckButton.HighlightFgColor': '255 52 76 255',
+    'Label.TextColor': '236 232 232 255',
+}
+CHAT_SCHEME_FONTS = ('ChatFont', 'RK_Chat', 'RK_Mono', 'Default')
+
+
+def build_chatscheme(src_text, client_text):
+    root = kv.parse(src_text)
+    scheme = kv.find(root, 'Scheme')
+    base = kv.find(scheme, 'BaseSettings')
+    for k, v in CHAT_SCHEME_COLORS.items():
+        kv.set(base, k, v)
+    client_fonts = kv.path(kv.parse(client_text), 'Scheme', 'Fonts')
+    fonts = kv.find(scheme, 'Fonts')
+    for name in CHAT_SCHEME_FONTS:
+        blk = kv.find(client_fonts, name)
+        if blk is not None:
+            kv.remove(fonts, name)
+            fonts.append([name, copy.deepcopy(blk), None])
+    borders = kv.find(scheme, 'Borders')
+    kv.remove(borders, 'RK_ChatWell')
+    borders.append(['RK_ChatWell', scalable_border('chat_well', 0, 0), None])
     return kv.dump(root) + '\n'
 
 
@@ -1670,8 +1709,12 @@ def main():
                 shipped += 1
     print(f'  res files shipped: {shipped}')
 
-    write(os.path.join(OUT, 'resource/clientscheme.res'),
-          build_scheme(open(os.path.join(work, 'resource/clientscheme.res'), encoding='utf-8', errors='replace').read()))
+    client = build_scheme(open(os.path.join(work, 'resource/clientscheme.res'), encoding='utf-8', errors='replace').read())
+    write(os.path.join(OUT, 'resource/clientscheme.res'), client)
+    chat_src = os.path.join(work, 'resource/chatscheme.res')
+    if os.path.exists(chat_src):
+        write(os.path.join(OUT, 'resource/chatscheme.res'),
+              build_chatscheme(open(chat_src, encoding='utf-8', errors='replace').read(), client))
     ss = os.path.join(work, 'resource/sourcescheme.res')
     if os.path.exists(ss):  # GameUI dialogs (loading window...) take their colours from here
         write(os.path.join(OUT, 'resource/sourcescheme.res'),

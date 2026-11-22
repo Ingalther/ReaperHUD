@@ -12,7 +12,7 @@
 		"wide"		"300"
 		"tall"		"112"
 		"PaintBackgroundType"		"0"
-		"bgcolor_override"		"34 6 11 235"
+		"bgcolor_override"		"8 8 10 150"
 		"paintborder"		"0"
 	}
 	"ChatInputLine"
@@ -51,7 +51,7 @@
 		"textinsetx"		"6"
 		"paintbackground"		"1"
 		"paintborder"		"0"
-		"defaultBgColor_override"		"150 16 32 255"
+		"defaultBgColor_override"		"150 16 32 235"
 		"armedBgColor_override"		"224 26 46 255"
 		"depressedBgColor_override"		"255 52 76 255"
 		"defaultFgColor_override"		"236 232 232 255"
@@ -75,7 +75,8 @@
 		"textAlignment"		"south-west"
 		"font"		"RK_Chat"
 		"maxchars"		"-1"
-		"bgcolor_override"		"0 0 0 185"
+		"bgcolor_override"		"0 0 0 110"
 		"fgcolor_override"		"236 232 232 255"
+		"border"		"RK_ChatWell"
 	}
 }

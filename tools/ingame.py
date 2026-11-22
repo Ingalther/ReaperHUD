@@ -876,8 +876,28 @@ TEAM_TEXTURES = MODULATE - {'ig_tid_mul'}   # these also get a BLU twin (b/<name
 ADDITIVE = {'ig_digits_add', 'ig_ammo_digits_add'}   # added to what is under them (and their BLU twins)
 
 
+def chat_well():
+    """The open chat's history well frame (its border, set in chatscheme.res: the game paints it only while the chat
+    is open): faint scanlines, a thin frame, crimson corner brackets top left and bottom right, a small 会話 // COMMS
+    tag. No fill: the well's own background colour is its ink."""
+    w, h = CHAT[2] - 2 * CHAT_PAD, CHAT_WELL_H
+    p = Px(w, h)
+    W, H = p.W, p.H
+    p.rects([(0, y, W, y + 1) for y in range(0, int(H), 4)], (255, 255, 255, 7))
+    for (x0, y0, x1, y1) in ((0, 0, W, 1), (0, H - 1, W, H), (0, 0, 1, H), (W - 1, 0, W, H)):
+        p.rect(x0, y0, x1, y1, (70, 66, 72, 170))
+    L, T = 34, 2.5
+    p.rect(0, 0, L, T, c(RED)); p.rect(0, 0, T, L * 0.6, c(RED))
+    p.rect(W - L, H - T, W, H, c(RED)); p.rect(W - T, H - L * 0.6, W, H, c(RED))
+    p.rect(12, 9, 17, 14, c(RED))
+    x = p.text(23, 11.5, '会話', ('jp5', 11), c(GREY), 'lm')
+    p.text(23 + x + 6, 11.5, '//  COMMS', ('mono', 11), c(GREY, 170), 'lm')
+    return p.result()
+
+
 def textures(out):
     minmode.art(out)
+    out.thumb('chat_well', chat_well())
     card = tex_health()
     out.thumb('ig_health', card, team=True)
     for side, im in tex_gauge_sides(card).items():
@@ -1785,23 +1805,25 @@ def patch_hudlayout(body):
 
 CHAT = (17, 200, 300, 112)   # ends 48 units above the health card, and above minmode's health plate (it ran onto it)
 CHAT_HEAD = 13               # the open chat's header strip (the filters button across its top)
-CHAT_PAD = 3                 # the crimson frame around the well: the chat's own (open-only) background showing
+CHAT_PAD = 3                 # the gap around the well: the chat's own (open-only) background showing
+CHAT_WELL_H = 72             # the history well's height
 
 
 def patch_chat(root):
-    """The open chat, made of what the game lets a HUD set (colours, places; the well's frame, the typing line's
-    outline and the scroll bar are the game's): its background, painted only while it is open, is deep crimson, and
-    the history well sits inset in it, so a crimson frame shows around the well and the typing line under it; the
-    filters button is a crimson header strip across the top (//  COMMS  //  FILTERS), hot red on hover; the typing
-    line's field is the dark one TextEntry.BgColor gives it (build.py). No border on the chat itself: a border is
-    drawn while the chat is closed too (a frame stood on the left of the screen)."""
+    """The open chat: the chat reads its own scheme, resource/chatscheme.res (build.build_chatscheme): its fonts
+    (Tektur), the typing line's dark field, the red scroll bar and the history well's frame come from there. Here:
+    its background, painted only while it is open, is a light ink glass, the history well sits inset in it with the
+    HUD's frame (crimson corner brackets, 会話 // COMMS; the game paints that border only while the chat is open),
+    the filters button is a crimson header strip across the top (//  COMMS  //  FILTERS), hot red on hover. No border
+    on the chat itself or on the typing line: those are drawn while the chat is closed too."""
     body = next(e[1] for e in root if isinstance(e[1], list))
     kv.setmany(kv.find(body, 'HudChat'), xpos=CHAT[0], ypos=CHAT[1], wide=CHAT[2], tall=CHAT[3])
-    kv.setmany(kv.find(body, 'HudChat'), PaintBackgroundType=0, bgcolor_override='34 6 11 235', paintborder=0)
+    kv.setmany(kv.find(body, 'HudChat'), PaintBackgroundType=0, bgcolor_override='8 8 10 150', paintborder=0)
     hist = kv.find(body, 'HudChatHistory')
     if hist is not None:
-        kv.setmany(hist, xpos=CHAT_PAD, ypos=CHAT_HEAD + CHAT_PAD, wide=CHAT[2] - 2 * CHAT_PAD, tall=72,
-                   bgcolor_override='0 0 0 185', fgcolor_override='236 232 232 255', font='RK_Chat')
+        kv.setmany(hist, xpos=CHAT_PAD, ypos=CHAT_HEAD + CHAT_PAD, wide=CHAT[2] - 2 * CHAT_PAD, tall=CHAT_WELL_H,
+                   bgcolor_override='0 0 0 110', fgcolor_override='236 232 232 255', font='RK_Chat',
+                   border='RK_ChatWell')
     line = kv.find(body, 'ChatInputLine')
     if line is not None:
         kv.setmany(line, bgcolor_override='0 0 0 0', fgcolor_override='236 232 232 255')
@@ -1811,7 +1833,7 @@ def patch_chat(root):
         # outline), so the strip is its flat fill; one label, so COMMS and FILTERS share it
         kv.setmany(btn, xpos=0, ypos=0, wide=CHAT[2], tall=CHAT_HEAD, autoResize=0, textAlignment='west',
                    labelText='//  COMMS  //  FILTERS', textinsetx=6, paintbackground=1, paintborder=0,
-                   defaultBgColor_override='150 16 32 255', armedBgColor_override='224 26 46 255',
+                   defaultBgColor_override='150 16 32 235', armedBgColor_override='224 26 46 255',
                    depressedBgColor_override='255 52 76 255', defaultFgColor_override='236 232 232 255',
                    armedFgColor_override='255 255 255 255', depressedFgColor_override='7 7 9 255')
 
