@@ -241,6 +241,8 @@ RK_BORDERS = {
     'RK_IntelCard': scalable_border('intel_card', 0, 0),  # the intel you carry (patch_flagpanel)
 }
 RK_BORDERS['RK_Card_none'] = scalable_border('blank', 0, 0)
+RK_BORDERS['RK_ChatHead'] = scalable_border('chat_head', 0, 0)  # the open chat's header strip (ingame.patch_chat)
+RK_BORDERS['RK_ChatHead_h'] = scalable_border('chat_head_h', 0, 0)
 for _c in screens.CARD_BORDERS + extras.XH_CARDS + blackwall.KS_CARDS:  # whole-image borders: zero corners stretch the art over the button
     RK_BORDERS[f'RK_Card_{_c}'] = scalable_border(_c, 0, 0)
     RK_BORDERS[f'RK_Card_{_c}_h'] = scalable_border(_c + '_h', 0, 0)
@@ -334,6 +336,9 @@ def build_scheme(src_text):
         'Menu.ArmedTextColor': 'RK_Ink', 'Menu.ArmedBgColor': 'RK_Red', 'Menu.BgColor': '7 7 9 240',
         'Frame.BgColor': '7 7 9 235', 'Frame.OutOfFocusBgColor': '7 7 9 235',
         'TextEntry.SelectedBgColor': 'RK_RedDeep', 'TextEntry.CursorColor': 'RK_Red',
+        # the chat's typing line: the game keeps its own panel see-through, so its dark field is the text entry's
+        # (every other text entry of the HUD brings its own colour), the typed text bone white instead of orange
+        'TextEntry.BgColor': '4 4 6 240', 'Chat.TypingText': 'RK_Text',
         'Slider.NobColor': 'RK_Red', 'Slider.TrackColor': '30 31 32 255',
         'ScrollBarSlider.FgColor': 'RK_Grey', 'ScrollBarButton.FgColor': 'RK_Grey',
         'ItemColor': '224 26 46 200', 'MenuColor': 'RK_Text', 'VguiScreenCursor': 'RK_Red',

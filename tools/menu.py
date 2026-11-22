@@ -1312,6 +1312,9 @@ def textwindow(root):
                                'enabled': 1, 'paintborder': 1, 'border': 'RK_MMProfile',
                                'bgcolor_override': '7 6 9 200', 'PaintBackgroundType': 0, 'mouseinputenabled': 0})
     pad = 28
+    blk = kv.find(body, 'TextMessage')  # a text entry: keeps no field of its own (TextEntry.BgColor is the chat's)
+    if blk is not None:
+        kv.set(blk, 'bgcolor_override', '0 0 0 0')
     for n in ('TFTextMessage', 'HTMLMessage'):
         blk = kv.find(body, n)
         if blk is not None:

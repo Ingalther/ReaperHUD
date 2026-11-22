@@ -72,6 +72,7 @@
 		"fieldName"		"TextMessage"
 		"visible"		"0"
 		"enabled"		"0"
+		"bgcolor_override"		"0 0 0 0"
 	}
 	"TFTextMessage"
 	{
