@@ -241,9 +241,6 @@ RK_BORDERS = {
     'RK_IntelCard': scalable_border('intel_card', 0, 0),  # the intel you carry (patch_flagpanel)
 }
 RK_BORDERS['RK_Card_none'] = scalable_border('blank', 0, 0)
-# the open chat (ingame.patch_chat): the game paints these two borders only while the chat is open
-RK_BORDERS['RK_ChatWell'] = scalable_border('chat_well', 0, 0)
-RK_BORDERS['RK_ChatInput'] = scalable_border('chat_input', 12, 3)
 for _c in screens.CARD_BORDERS + extras.XH_CARDS + blackwall.KS_CARDS:  # whole-image borders: zero corners stretch the art over the button
     RK_BORDERS[f'RK_Card_{_c}'] = scalable_border(_c, 0, 0)
     RK_BORDERS[f'RK_Card_{_c}_h'] = scalable_border(_c + '_h', 0, 0)
