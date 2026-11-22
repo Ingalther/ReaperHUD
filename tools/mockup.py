@@ -492,13 +492,13 @@ def chat(p):
     lines = [[('*DEAD* ', 'RK_Grey'), ('Kuroi', '255 120 104 255'), (' :  gg, that rocket was clean', 'RK_Text')],
              [('Static', '112 164 232 255'), (' :  intel incoming, watch sewers', 'RK_Text')],
              [('Ingalther', '255 120 104 255'), (' :  well played', 'RK_Text')]]
-    lh = FONTS['ChatFont']['cell'] / S
+    lh = FONTS['RK_Chat']['cell'] / S
     ly = hy + hh - lh * len(lines)
     for parts in lines:
         lx = hx
         for t, col in parts:
-            tw = p.text_width(t, 'ChatFont')
-            p.text(t, lx, ly, tw + 1, lh, 'ChatFont', col)
+            tw = p.text_width(t, 'RK_Chat')
+            p.text(t, lx, ly, tw + 1, lh, 'RK_Chat', col)
             lx += tw
         ly += lh
 

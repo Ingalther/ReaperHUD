@@ -54,6 +54,21 @@ def font_block(name, tall, weight=400, **extra):
     return [['1', [[k, str(v), None] for k, v in keys.items()], None]]
 
 
+# ChatFont: the game draws the chat's typing line in it at its pixel size, not scaled to the screen (11 was 11 px
+# at 1080p, the history 24), so like the stock font it gets a size per screen height, each about the history's
+CHAT_BANDS = ((480, 599, 12), (600, 767, 15), (768, 1023, 19), (1024, 1199, 24), (1200, 1439, 28),
+              (1440, 1599, 33), (1600, 2159, 37), (2160, 10000, 50))
+
+
+def chat_font_block():
+    out = []
+    for i, (lo, hi, tall) in enumerate(CHAT_BANDS, 1):
+        keys = dict(name='Tektur SemiBold', tall=tall, weight=600, yres='%d %d' % (lo, hi), additive=0, antialias=1,
+                    italic=0, outline=0, dropshadow=1)
+        out.append([str(i), [[k, str(v), None] for k, v in keys.items()], None])
+    return out
+
+
 DIGITS_T = 44     # health / ammo digits: the preview's 78 px Rajdhani Bold
 MAXNUM_T = 14     # "/ 200": 24 px Rajdhani SemiBold
 RESERVE_T = 16    # "/ 20": 28 px
@@ -82,7 +97,10 @@ FONTS = {
     'RK_SlotTime': font_block('Rajdhani', 7, 700, outline=1),         # respawn seconds on a teammate's slot
     'RK_Damage': font_block('Rajdhani', 14, 700, outline=1),          # damage numbers: 24 px
     'RK_DamageBig': font_block('Rajdhani', 17, 700, outline=1),       # 30 px
-    'ChatFont': font_block('Tektur SemiBold', 11, 600, dropshadow=1),  # chat: 23 px with a shadow (17 read too small)
+    # chat history: 23 px with a shadow (17 read too small). Its own name, set in basechat.res, so ChatFont can
+    # follow the game's sizes below
+    'RK_Chat': font_block('Tektur SemiBold', 11, 600, dropshadow=1),
+    'ChatFont': chat_font_block(),
 }
 import minmode  # noqa: E402  the MINMODE layout (cl_hud_minmode 1)
 FONTS.update(minmode.fonts(font_block))
@@ -1777,7 +1795,7 @@ def patch_chat(root):
     kv.setmany(kv.find(body, 'HudChat'), PaintBackgroundType=0, bgcolor_override='9 9 11 225', paintborder=0)
     hist = kv.find(body, 'HudChatHistory')
     if hist is not None:
-        kv.setmany(hist, bgcolor_override='0 0 0 110', fgcolor_override='236 232 232 255')
+        kv.setmany(hist, bgcolor_override='0 0 0 110', fgcolor_override='236 232 232 255', font='RK_Chat')
     line = kv.find(body, 'ChatInputLine')
     if line is not None:
         kv.setmany(line, bgcolor_override='0 0 0 0', fgcolor_override='236 232 232 255')

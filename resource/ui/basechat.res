@@ -74,7 +74,7 @@
 		"enabled"		"1"
 		"labelText"		""
 		"textAlignment"		"south-west"
-		"font"		"ChatFont"
+		"font"		"RK_Chat"
 		"maxchars"		"-1"
 		"bgcolor_override"		"0 0 0 110"
 		"fgcolor_override"		"236 232 232 255"

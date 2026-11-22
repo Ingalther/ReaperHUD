@@ -3559,13 +3559,112 @@
 				"dropshadow"		"0"
 			}
 		}
-		"ChatFont"
+		"RK_Chat"
 		{
 			"1"
 			{
 				"name"		"Tektur SemiBold"
 				"tall"		"11"
 				"weight"		"600"
+				"additive"		"0"
+				"antialias"		"1"
+				"italic"		"0"
+				"outline"		"0"
+				"dropshadow"		"1"
+			}
+		}
+		"ChatFont"
+		{
+			"1"
+			{
+				"name"		"Tektur SemiBold"
+				"tall"		"12"
+				"weight"		"600"
+				"yres"		"480 599"
+				"additive"		"0"
+				"antialias"		"1"
+				"italic"		"0"
+				"outline"		"0"
+				"dropshadow"		"1"
+			}
+			"2"
+			{
+				"name"		"Tektur SemiBold"
+				"tall"		"15"
+				"weight"		"600"
+				"yres"		"600 767"
+				"additive"		"0"
+				"antialias"		"1"
+				"italic"		"0"
+				"outline"		"0"
+				"dropshadow"		"1"
+			}
+			"3"
+			{
+				"name"		"Tektur SemiBold"
+				"tall"		"19"
+				"weight"		"600"
+				"yres"		"768 1023"
+				"additive"		"0"
+				"antialias"		"1"
+				"italic"		"0"
+				"outline"		"0"
+				"dropshadow"		"1"
+			}
+			"4"
+			{
+				"name"		"Tektur SemiBold"
+				"tall"		"24"
+				"weight"		"600"
+				"yres"		"1024 1199"
+				"additive"		"0"
+				"antialias"		"1"
+				"italic"		"0"
+				"outline"		"0"
+				"dropshadow"		"1"
+			}
+			"5"
+			{
+				"name"		"Tektur SemiBold"
+				"tall"		"28"
+				"weight"		"600"
+				"yres"		"1200 1439"
+				"additive"		"0"
+				"antialias"		"1"
+				"italic"		"0"
+				"outline"		"0"
+				"dropshadow"		"1"
+			}
+			"6"
+			{
+				"name"		"Tektur SemiBold"
+				"tall"		"33"
+				"weight"		"600"
+				"yres"		"1440 1599"
+				"additive"		"0"
+				"antialias"		"1"
+				"italic"		"0"
+				"outline"		"0"
+				"dropshadow"		"1"
+			}
+			"7"
+			{
+				"name"		"Tektur SemiBold"
+				"tall"		"37"
+				"weight"		"600"
+				"yres"		"1600 2159"
+				"additive"		"0"
+				"antialias"		"1"
+				"italic"		"0"
+				"outline"		"0"
+				"dropshadow"		"1"
+			}
+			"8"
+			{
+				"name"		"Tektur SemiBold"
+				"tall"		"50"
+				"weight"		"600"
+				"yres"		"2160 10000"
 				"additive"		"0"
 				"antialias"		"1"
 				"italic"		"0"
