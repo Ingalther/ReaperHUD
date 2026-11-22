@@ -1784,34 +1784,36 @@ def patch_hudlayout(body):
 
 
 CHAT = (17, 200, 300, 112)   # ends 48 units above the health card, and above minmode's health plate (it ran onto it)
-CHAT_HEAD = 14               # the open chat's header strip (the filters button across its top)
+CHAT_HEAD = 13               # the open chat's header strip (the filters button across its top)
+CHAT_PAD = 3                 # the crimson frame around the well: the chat's own (open-only) background showing
 
 
 def patch_chat(root):
+    """The open chat, made of what the game lets a HUD set (colours, places; the well's frame, the typing line's
+    outline and the scroll bar are the game's): its background, painted only while it is open, is deep crimson, and
+    the history well sits inset in it, so a crimson frame shows around the well and the typing line under it; the
+    filters button is a crimson header strip across the top (//  COMMS  //  FILTERS), hot red on hover; the typing
+    line's field is the dark one TextEntry.BgColor gives it (build.py). No border on the chat itself: a border is
+    drawn while the chat is closed too (a frame stood on the left of the screen)."""
     body = next(e[1] for e in root if isinstance(e[1], list))
     kv.setmany(kv.find(body, 'HudChat'), xpos=CHAT[0], ypos=CHAT[1], wide=CHAT[2], tall=CHAT[3])
-    # the open chat as one of the HUD's cards (it was the stock grey box): ink glass with the crimson frame, the
-    # history on a darker well, the filter button in flat ink, crimson on hover
-    # no border: a border is drawn while the chat is closed too (a frame stood on the left of the screen)
-    kv.setmany(kv.find(body, 'HudChat'), PaintBackgroundType=0, bgcolor_override='9 9 11 225', paintborder=0)
-    # open: a header strip (the filters button across the top), the history in a darker well inset under it, the
-    # typing line under the well (the game puts it there) in the dark field TextEntry.BgColor gives it (build.py)
+    kv.setmany(kv.find(body, 'HudChat'), PaintBackgroundType=0, bgcolor_override='34 6 11 235', paintborder=0)
     hist = kv.find(body, 'HudChatHistory')
     if hist is not None:
-        kv.setmany(hist, xpos=6, ypos=CHAT_HEAD + 5, wide=CHAT[2] - 12, tall=68, bgcolor_override='0 0 0 150',
-                   fgcolor_override='236 232 232 255', font='RK_Chat')
+        kv.setmany(hist, xpos=CHAT_PAD, ypos=CHAT_HEAD + CHAT_PAD, wide=CHAT[2] - 2 * CHAT_PAD, tall=72,
+                   bgcolor_override='0 0 0 185', fgcolor_override='236 232 232 255', font='RK_Chat')
     line = kv.find(body, 'ChatInputLine')
     if line is not None:
         kv.setmany(line, bgcolor_override='0 0 0 0', fgcolor_override='236 232 232 255')
     btn = kv.find(body, 'ChatFiltersButton')
     if btn is not None:
         # a plain vgui button: the border_* keys of the HUD's own buttons do nothing on it (it drew the stock white
-        # outline), so the strip is its flat fill, red on hover; no outline
-        kv.setmany(btn, xpos=0, ypos=0, wide=CHAT[2], tall=CHAT_HEAD, autoResize=0, textAlignment='east',
-                   paintbackground=1, paintborder=0, defaultBgColor_override='18 18 21 245',
-                   armedBgColor_override='160 18 34 255', depressedBgColor_override='224 26 46 255',
-                   defaultFgColor_override='236 232 232 255', armedFgColor_override='255 255 255 255',
-                   depressedFgColor_override='7 7 9 255')
+        # outline), so the strip is its flat fill; one label, so COMMS and FILTERS share it
+        kv.setmany(btn, xpos=0, ypos=0, wide=CHAT[2], tall=CHAT_HEAD, autoResize=0, textAlignment='west',
+                   labelText='//  COMMS  //  FILTERS', textinsetx=6, paintbackground=1, paintborder=0,
+                   defaultBgColor_override='150 16 32 255', armedBgColor_override='224 26 46 255',
+                   depressedBgColor_override='255 52 76 255', defaultFgColor_override='236 232 232 255',
+                   armedFgColor_override='255 255 255 255', depressedFgColor_override='7 7 9 255')
 
 
 CHAT_ANIMS = '''
