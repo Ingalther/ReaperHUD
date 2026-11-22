@@ -876,24 +876,8 @@ TEAM_TEXTURES = MODULATE - {'ig_tid_mul'}   # these also get a BLU twin (b/<name
 ADDITIVE = {'ig_digits_add', 'ig_ammo_digits_add'}   # added to what is under them (and their BLU twins)
 
 
-def chat_head(hover=False):
-    """The open chat's header strip (the filters button stretched over the chat's top, so it shows only while the
-    chat is open): ink glass, a red square and // COMMS on the left (the button's own FILTERS text sits right), a
-    crimson hairline along its foot with a hot stub at the left end. Hover: a red tint."""
-    p = Px(CHAT[2], CHAT_HEAD)
-    w, h = p.W, p.H
-    p.rect(0, 0, w, h, (52, 6, 14, 240) if hover else (16, 16, 18, 235))
-    p.rect(0, h - 1.2, w, h, c(RED, 200))
-    p.rect(0, h - 3, 60, h, c(HOT))
-    p.rect(13, h / 2 - 4, 20, h / 2 + 3, c(RED))
-    p.text(28, h / 2, '//  COMMS', ('mono', 14), c(GREY), 'lm')
-    return p.result()
-
-
 def textures(out):
     minmode.art(out)
-    out.thumb('chat_head', chat_head())
-    out.thumb('chat_head_h', chat_head(True))
     card = tex_health()
     out.thumb('ig_health', card, team=True)
     for side, im in tex_gauge_sides(card).items():
@@ -1799,8 +1783,8 @@ def patch_hudlayout(body):
             kv.set(blk, 'ypos_minmode', CARD[1] + 22)
 
 
-CHAT = (17, 225, 300, 112)   # ends 23 units above the health card (it ran onto it)
-CHAT_HEAD = 14               # the open chat's header strip (the filters button, ingame.chat_head)
+CHAT = (17, 200, 300, 112)   # ends 48 units above the health card, and above minmode's health plate (it ran onto it)
+CHAT_HEAD = 14               # the open chat's header strip (the filters button across its top)
 
 
 def patch_chat(root):
@@ -1821,11 +1805,13 @@ def patch_chat(root):
         kv.setmany(line, bgcolor_override='0 0 0 0', fgcolor_override='236 232 232 255')
     btn = kv.find(body, 'ChatFiltersButton')
     if btn is not None:
-        kv.setmany(btn, xpos=0, ypos=0, wide=CHAT[2], tall=CHAT_HEAD, autoResize=0, font='RK_Mono', allcaps=1,
-                   textAlignment='east', textinsetx=6, paintbackground=0, paintborder=1, border_default='RK_ChatHead',
-                   border_armed='RK_ChatHead_h', border_depressed='RK_ChatHead_h', border_selected='RK_ChatHead_h',
+        # a plain vgui button: the border_* keys of the HUD's own buttons do nothing on it (it drew the stock white
+        # outline), so the strip is its flat fill, red on hover; no outline
+        kv.setmany(btn, xpos=0, ypos=0, wide=CHAT[2], tall=CHAT_HEAD, autoResize=0, textAlignment='east',
+                   paintbackground=1, paintborder=0, defaultBgColor_override='18 18 21 245',
+                   armedBgColor_override='160 18 34 255', depressedBgColor_override='224 26 46 255',
                    defaultFgColor_override='236 232 232 255', armedFgColor_override='255 255 255 255',
-                   depressedFgColor_override='255 255 255 255')
+                   depressedFgColor_override='7 7 9 255')
 
 
 CHAT_ANIMS = '''

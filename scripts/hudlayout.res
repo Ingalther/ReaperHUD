@@ -860,7 +860,7 @@
 		"visible"		"1"
 		"enabled"		"1"
 		"xpos"		"17"
-		"ypos"		"225"
+		"ypos"		"200"
 		"wide"		"300"
 		"tall"		"112"
 		"PaintBackgroundType"		"2"

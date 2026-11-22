@@ -241,8 +241,6 @@ RK_BORDERS = {
     'RK_IntelCard': scalable_border('intel_card', 0, 0),  # the intel you carry (patch_flagpanel)
 }
 RK_BORDERS['RK_Card_none'] = scalable_border('blank', 0, 0)
-RK_BORDERS['RK_ChatHead'] = scalable_border('chat_head', 0, 0)  # the open chat's header strip (ingame.patch_chat)
-RK_BORDERS['RK_ChatHead_h'] = scalable_border('chat_head_h', 0, 0)
 for _c in screens.CARD_BORDERS + extras.XH_CARDS + blackwall.KS_CARDS:  # whole-image borders: zero corners stretch the art over the button
     RK_BORDERS[f'RK_Card_{_c}'] = scalable_border(_c, 0, 0)
     RK_BORDERS[f'RK_Card_{_c}_h'] = scalable_border(_c + '_h', 0, 0)
@@ -1300,7 +1298,7 @@ ANIMS_MENU = r'''
 event MenuOpen
 {
 	StopEvent MenuClose 0.0
-	Animate HudMenu ypos			"-82"		Linear 0.0 0.0
+	Animate HudMenu ypos			"-107"		Linear 0.0 0.0
 	Animate HudMenu xpos			"-40"		Linear 0.0 0.0
 	Animate HudMenu xpos			"0"			Deaccel 0.0 0.18
 	Animate HudMenu Alpha			"255"		Linear 0.0 0.12

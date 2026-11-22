@@ -6384,26 +6384,6 @@
 			"draw_corner_width"		"0"
 			"draw_corner_height"		"0"
 		}
-		"RK_ChatHead"
-		{
-			"bordertype"		"scalable_image"
-			"backgroundtype"		"2"
-			"image"		"replay/thumbnails/rk/chat_head"
-			"src_corner_height"		"0"
-			"src_corner_width"		"0"
-			"draw_corner_width"		"0"
-			"draw_corner_height"		"0"
-		}
-		"RK_ChatHead_h"
-		{
-			"bordertype"		"scalable_image"
-			"backgroundtype"		"2"
-			"image"		"replay/thumbnails/rk/chat_head_h"
-			"src_corner_height"		"0"
-			"src_corner_width"		"0"
-			"draw_corner_width"		"0"
-			"draw_corner_height"		"0"
-		}
 		"RK_Card_layout_centred"
 		{
 			"bordertype"		"scalable_image"

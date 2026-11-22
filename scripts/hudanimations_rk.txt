@@ -347,11 +347,11 @@ event HudMedicChargedStop
 // casual / competitive matches move the chat to the stock spot on their own; keep it where the HUD puts it
 event CompetitiveGame_LowerChatWindow
 {
-	Animate HudChat ypos 225 Accel 0 0
+	Animate HudChat ypos 200 Accel 0 0
 }
 event CompetitiveGame_RestoreChatWindow
 {
-	Animate HudChat ypos 225 Accel 0 0
+	Animate HudChat ypos 200 Accel 0 0
 }
 
 // hitmarker (your damage on an enemy). Restarted through its own event: re-running DamagedPlayer on
@@ -372,7 +372,7 @@ event RK_HitmarkerFlash
 event MenuOpen
 {
 	StopEvent MenuClose 0.0
-	Animate HudMenu ypos			"-82"		Linear 0.0 0.0
+	Animate HudMenu ypos			"-107"		Linear 0.0 0.0
 	Animate HudMenu xpos			"-40"		Linear 0.0 0.0
 	Animate HudMenu xpos			"0"			Deaccel 0.0 0.18
 	Animate HudMenu Alpha			"255"		Linear 0.0 0.12
