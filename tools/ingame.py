@@ -876,8 +876,40 @@ TEAM_TEXTURES = MODULATE - {'ig_tid_mul'}   # these also get a BLU twin (b/<name
 ADDITIVE = {'ig_digits_add', 'ig_ammo_digits_add'}   # added to what is under them (and their BLU twins)
 
 
+def chat_well():
+    """The open chat's history well (its border: the game paints it only while the chat is open): faint scanlines, a
+    thin frame, crimson corner brackets top left and bottom right, a small 会話 // COMMS tag. No fill: the well's own
+    background colour is its ink."""
+    w, h = CHAT[2] - 12, CHAT_WELL_H
+    p = Px(w, h)
+    W, H = p.W, p.H
+    p.rects([(0, y, W, y + 1) for y in range(0, int(H), 4)], (255, 255, 255, 7))
+    for (x0, y0, x1, y1) in ((0, 0, W, 1), (0, H - 1, W, H), (0, 0, 1, H), (W - 1, 0, W, H)):
+        p.rect(x0, y0, x1, y1, (70, 66, 72, 170))
+    L, T = 34, 2.5
+    p.rect(0, 0, L, T, c(RED)); p.rect(0, 0, T, L * 0.6, c(RED))
+    p.rect(W - L, H - T, W, H, c(RED)); p.rect(W - T, H - L * 0.6, W, H, c(RED))
+    p.rect(12, 9, 17, 14, c(RED))
+    x = p.text(23, 11.5, '会話', ('jp5', 11), c(GREY), 'lm')
+    p.text(23 + x + 6, 11.5, '//  COMMS', ('mono', 11), c(GREY, 170), 'lm')
+    return p.result()
+
+
+def chat_input():
+    """The open chat's typing line (its border, shown only while the chat is open): dark ink, a crimson bar at the
+    left end, a grey hairline along its foot. Drawn with corners, so it stretches to whatever width the game gives."""
+    p = Px(64, 14)
+    W, H = p.W, p.H
+    p.rect(0, 0, W, H, (5, 5, 7, 235))
+    p.rect(0, H - 1, W, H, (70, 66, 72, 200))
+    p.rect(0, 0, 3, H, c(RED))
+    return p.result()
+
+
 def textures(out):
     minmode.art(out)
+    out.thumb('chat_well', chat_well())
+    out.thumb('chat_input', chat_input())
     card = tex_health()
     out.thumb('ig_health', card, team=True)
     for side, im in tex_gauge_sides(card).items():
@@ -1785,6 +1817,7 @@ def patch_hudlayout(body):
 
 CHAT = (17, 200, 300, 112)   # ends 48 units above the health card, and above minmode's health plate (it ran onto it)
 CHAT_HEAD = 14               # the open chat's header strip (the filters button across its top)
+CHAT_WELL_H = 68             # the history well's height under it
 
 
 def patch_chat(root):
@@ -1798,11 +1831,11 @@ def patch_chat(root):
     # typing line under the well (the game puts it there) in the dark field TextEntry.BgColor gives it (build.py)
     hist = kv.find(body, 'HudChatHistory')
     if hist is not None:
-        kv.setmany(hist, xpos=6, ypos=CHAT_HEAD + 5, wide=CHAT[2] - 12, tall=68, bgcolor_override='0 0 0 150',
-                   fgcolor_override='236 232 232 255', font='RK_Chat')
+        kv.setmany(hist, xpos=6, ypos=CHAT_HEAD + 5, wide=CHAT[2] - 12, tall=CHAT_WELL_H, bgcolor_override='0 0 0 150',
+                   fgcolor_override='236 232 232 255', font='RK_Chat', border='RK_ChatWell')
     line = kv.find(body, 'ChatInputLine')
     if line is not None:
-        kv.setmany(line, bgcolor_override='0 0 0 0', fgcolor_override='236 232 232 255')
+        kv.setmany(line, bgcolor_override='0 0 0 0', fgcolor_override='236 232 232 255', border='RK_ChatInput')
     btn = kv.find(body, 'ChatFiltersButton')
     if btn is not None:
         # a plain vgui button: the border_* keys of the HUD's own buttons do nothing on it (it drew the stock white

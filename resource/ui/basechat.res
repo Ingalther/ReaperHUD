@@ -29,6 +29,7 @@
 		"PaintBackgroundType"		"0"
 		"bgcolor_override"		"0 0 0 0"
 		"fgcolor_override"		"236 232 232 255"
+		"border"		"RK_ChatInput"
 	}
 	"ChatFiltersButton"
 	{
@@ -76,5 +77,6 @@
 		"maxchars"		"-1"
 		"bgcolor_override"		"0 0 0 150"
 		"fgcolor_override"		"236 232 232 255"
+		"border"		"RK_ChatWell"
 	}
 }
