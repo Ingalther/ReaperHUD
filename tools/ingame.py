@@ -1816,6 +1816,163 @@ def patch_chat(root):
                    armedFgColor_override='255 255 255 255', depressedFgColor_override='7 7 9 255')
 
 
+# the chat's filter checklist (FILTERS on the chat's header): the stock file (hl2's, not in tf2_misc), kept here
+CHAT_FILTERS_STOCK = r'''"Resource/UI/ChatFilters.res"
+{
+	"HudChatFilterPanel"
+	{
+		"ControlName"		"EditablePanel"
+		"fieldName"		"HudChatFilterPanel"
+		"xpos"			"335"
+		"ypos"			"275"
+		"zpos"			"0"
+		"wide"			"130"
+		"tall"			"70"
+		"visible"		"0"
+		"enabled"		"1"
+	}
+
+	"joinleave_button"
+	{
+		"ControlName"		"CheckButton"
+		"fieldName"		"joinleave_button"
+		"xpos"			"10"
+		"ypos"			"5"
+		"wide"			"150"
+		"tall"			"10"
+		"autoResize"		"1"
+		"pinCorner"		"0"
+		"visible"		"1"
+		"enabled"		"1"
+		"tabPosition"		"0"
+		"labelText"		"#filter_joinleave"
+		"textAlignment"		"west"
+		"dulltext"		"0"
+		"brighttext"		"0"
+		"Default"		"0"		
+	}
+	"namechange_button"
+	{
+		"ControlName"		"CheckButton"
+		"fieldName"		"namechange_button"
+		"xpos"			"10"
+		"ypos"			"15"
+		"wide"			"150"
+		"tall"			"10"
+		"autoResize"		"1"
+		"pinCorner"		"0"
+		"visible"		"1"
+		"enabled"		"1"
+		"tabPosition"		"0"
+		"labelText"		"#filter_namechange"
+		"textAlignment"		"west"
+		"dulltext"		"0"
+		"brighttext"		"0"
+		"Default"		"0"		
+	}
+	"publicchat_button"
+	{
+		"ControlName"		"CheckButton"
+		"fieldName"		"publicchat_button"
+		"xpos"			"10"
+		"ypos"			"25"
+		"wide"			"150"
+		"tall"			"10"
+		"autoResize"		"1"
+		"pinCorner"		"0"
+		"visible"		"1"
+		"enabled"		"1"
+		"tabPosition"		"0"
+		"labelText"		"#filter_publicchat"
+		"textAlignment"		"west"
+		"dulltext"		"0"
+		"brighttext"		"0"
+		"Default"		"0"		
+	}
+	"servermsg_button"
+	{
+		"ControlName"		"CheckButton"
+		"fieldName"		"servermsg_button"
+		"xpos"			"10"
+		"ypos"			"35"
+		"wide"			"150"
+		"tall"			"10"
+		"autoResize"		"1"
+		"pinCorner"		"0"
+		"visible"		"1"
+		"enabled"		"1"
+		"tabPosition"		"0"
+		"labelText"		"#filter_servermsg"
+		"textAlignment"		"west"
+		"dulltext"		"0"
+		"brighttext"		"0"
+		"Default"		"0"		
+	}
+	"teamchange_button"
+	{
+		"ControlName"		"CheckButton"
+		"fieldName"		"teamchange_button"
+		"xpos"			"10"
+		"ypos"			"45"
+		"wide"			"150"
+		"tall"			"10"
+		"autoResize"		"1"
+		"pinCorner"		"0"
+		"visible"		"1"
+		"enabled"		"1"
+		"tabPosition"		"0"
+		"labelText"		"#filter_teamchange"
+		"textAlignment"		"west"
+		"dulltext"		"0"
+		"brighttext"		"0"
+		"Default"		"0"		
+	}
+	
+	"achivement_button"
+	{
+		"ControlName"		"CheckButton"
+		"fieldName"		"achivement_button"
+		"xpos"			"10"
+		"ypos"			"55"
+		"wide"			"150"
+		"tall"			"10"
+		"autoResize"		"1"
+		"pinCorner"		"0"
+		"visible"		"1"
+		"enabled"		"1"
+		"tabPosition"		"0"
+		"labelText"		"#filter_achievement"
+		"textAlignment"		"west"
+		"dulltext"		"0"
+		"brighttext"		"0"
+		"Default"		"0"		
+	}
+}'''
+
+
+def chat_filters():
+    """resource/ui/chatfilters.res: the checklist as a little Reaper panel (it was the stock grey box): deep crimson
+    glass with a crimson header strip (//  CHAT FILTERS) over the check boxes. The panel shows only while it is open,
+    so the strip can be its own child. The game sets the panel's colour from its own at 127 alpha, so the glass is
+    see-through by nature."""
+    root = kv.parse(CHAT_FILTERS_STOCK)
+    body = next(e[1] for e in root if isinstance(e[1], list))
+    head = 12
+    pnl = kv.find(body, 'HudChatFilterPanel')
+    kv.setmany(pnl, tall=int(kv.get(pnl, 'tall')) + head, PaintBackgroundType=0, paintbackground=1,
+               bgcolor_override='34 6 11 255')
+    for name, blk in [(e[0], e[1]) for e in body if isinstance(e[1], list)]:
+        if name.endswith('_button'):
+            kv.setmany(blk, ypos=int(kv.get(blk, 'ypos')) + head, fgcolor_override='236 232 232 255')
+    kv.add_block(body, 'RK_FilterHead', {'ControlName': 'EditablePanel', 'fieldName': 'RK_FilterHead', 'xpos': 0,
+                                         'ypos': 0, 'zpos': 1, 'wide': 'f0', 'tall': head - 2, 'visible': 1,
+                                         'enabled': 1, 'paintbackground': 1, 'bgcolor_override': '150 16 32 255',
+                                         'mouseinputenabled': 0})
+    kv.add_block(body, 'RK_FilterTitle', lbl('RK_FilterTitle', 6, 0, 120, head - 2, '//  CHAT FILTERS', 'RK_Mono',
+                                             '236 232 232 255', z=2))
+    return kv.dump(root) + '\n'
+
+
 CHAT_ANIMS = '''
 // casual / competitive matches move the chat to the stock spot on their own; keep it where the HUD puts it
 event CompetitiveGame_LowerChatWindow

@@ -1679,6 +1679,7 @@ def main():
     os.makedirs(os.path.join(OUT, 'resource', 'fonts'), exist_ok=True)
     for f in SHIPPED_FONTS + ('OFL.txt',):
         shutil.copy(os.path.join(HERE, 'fonts', f), os.path.join(OUT, 'resource', 'fonts', f))
+    write(os.path.join(OUT, 'resource/ui/chatfilters.res'), ingame.chat_filters())
     write(os.path.join(OUT, 'scripts/hudanimations_rk.txt'), ANIMS + blackwall.ANIMS + ingame.CHAT_ANIMS + ANIMS_HITMARKER + ANIMS_MENU)
     write(os.path.join(OUT, 'scripts/hudanimations_manifest.txt'),
           'hudanimations_manifest\n{\n\t"file"\t\t"scripts/hudanimations.txt"\n'
