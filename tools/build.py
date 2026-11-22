@@ -323,6 +323,9 @@ def build_chatscheme(src_text, client_text):
     root = kv.parse(src_text)
     scheme = kv.find(root, 'Scheme')
     base = kv.find(scheme, 'BaseSettings')
+    # the chat's own lines (server messages, chat text) are TanLight: missing from the stock chatscheme, so the
+    # game's cream stood in; the HUD's bone white as in clientscheme
+    kv.set(kv.find(scheme, 'Colors'), 'TanLight', '236 232 232 255')
     for k, v in CHAT_SCHEME_COLORS.items():
         kv.set(base, k, v)
     client_fonts = kv.path(kv.parse(client_text), 'Scheme', 'Fonts')

@@ -11,6 +11,7 @@
 		"Black"		"0 0 0 255"
 		"Green"		"63 185 73 255"
 		"Blank"		"0 0 0 0"
+		"TanLight"		"236 232 232 255"
 	}
 	"BaseSettings"
 	{
