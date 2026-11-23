@@ -1247,6 +1247,12 @@ def strip_box(row=0, alt=False):
     return 'c%d' % INNER, y + AMMO_DY - row * STRIP_STEP, w, h
 
 
+# The Cow Mangler's bar: while its energy recharges the game flashes the fill red and white (code, no key changes it).
+# Under the BLU sheet a red fill multiplies to black, so the empty grey track read as the filled part: the bar looked
+# backwards. It keeps no sheet: TF2's own white / red fill over a dark track.
+NO_SHEET = {'huditemeffectmeter_particlecannon.res'}
+
+
 def patch_meter(root, rel):
     fname = rel.split('/')[-1]
     body = next(e[1] for e in root if isinstance(e[1], list))
@@ -1275,10 +1281,12 @@ def patch_meter(root, rel):
     bar = kv.find(body, 'ItemEffectMeter')
     count = kv.find(body, 'ItemEffectMeterCount')
     bar_shown = bar is not None and kv.get(bar, 'visible') != '0'
+    sheet = fname not in NO_SHEET
     if bar is not None:
-        kv.setmany(bar, xpos=bx, ypos=by, zpos=2, wide=bw, tall=bh, bgcolor_override='118 116 120 255',
-                   fgcolor_override='255 255 255 255')
-    if bar_shown:
+        kv.setmany(bar, xpos=bx, ypos=by, zpos=2, wide=bw, tall=bh,
+                   bgcolor_override='118 116 120 255' if sheet else '40 38 42 255', fgcolor_override='255 255 255 255')
+    kv.remove(body, 'RK_BarMul')
+    if bar_shown and sheet:
         kv.add_block(body, 'RK_BarMul', timg('RK_BarMul', bx, by, bw, bh, 'ig_bar_mul', z=3))
     if count is not None:
         # a count (revenge crits, heads, organs...) in the middle of the strip, clear of the name on its left

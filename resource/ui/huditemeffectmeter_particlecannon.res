@@ -71,24 +71,6 @@
 		"dulltext"		"0"
 		"brighttext"		"0"
 		"fgcolor_override"		"255 255 255 255"
-		"bgcolor_override"		"118 116 120 255"
-	}
-	"RK_BarMul"
-	{
-		"ControlName"		"CTFImagePanel"
-		"fieldName"		"RK_BarMul"
-		"xpos"		"46"
-		"ypos"		"5"
-		"zpos"		"3"
-		"wide"		"60"
-		"tall"		"4"
-		"visible"		"1"
-		"enabled"		"1"
-		"scaleImage"		"1"
-		"image"		"replay/thumbnails/rk/ig_bar_mul"
-		"mouseinputenabled"		"0"
-		"teambg_1"		"replay/thumbnails/rk/ig_bar_mul"
-		"teambg_2"		"replay/thumbnails/rk/ig_bar_mul"
-		"teambg_3"		"replay/thumbnails/rk/b/ig_bar_mul"
+		"bgcolor_override"		"40 38 42 255"
 	}
 }
