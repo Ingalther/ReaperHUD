@@ -4966,7 +4966,7 @@
 		"enabled"		"1"
 		"mouseinputenabled"		"0"
 		"textinsetx"		"0"
-		"labelText"		"THE REAPER HUD  v1.3  //  made by Ingalther"
+		"labelText"		"THE REAPER HUD  v1.3.1  //  made by Ingalther"
 		"textAlignment"		"east"
 		"font"		"RK_Mono12"
 		"fgcolor"		"138 132 138 190"
