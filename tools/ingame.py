@@ -895,7 +895,6 @@ def chat_well():
 def textures(out):
     minmode.art(out)
     out.thumb('chat_well', chat_well())
-    out.thumb('chat_head', Image.new('RGBA', (64, 8), (150, 16, 32, 235)), mips=False, team=True)
     card = tex_health()
     out.thumb('ig_health', card, team=True)
     for side, im in tex_gauge_sides(card).items():
@@ -1812,8 +1811,7 @@ def patch_chat(root):
     (Tektur), the typing line's dark field, the red scroll bar and the history well's frame come from there. Here:
     its background, painted only while it is open, is a light ink glass, the history well sits inset in it with the
     HUD's frame (crimson corner brackets; the game paints that border only while the chat is open),
-    the filters button is a header strip across the top (//  COMMS  //  FILTERS) in the team's colour (a team
-    picture under the see-through button: crimson on RED, azure on BLU), lighter on hover. No border
+    the filters button is a crimson header strip across the top (//  COMMS  //  FILTERS), hot red on hover. No border
     on the chat itself or on the typing line: those are drawn while the chat is closed too."""
     body = next(e[1] for e in root if isinstance(e[1], list))
     kv.setmany(kv.find(body, 'HudChat'), xpos=CHAT[0], ypos=CHAT[1], wide=CHAT[2], tall=CHAT[3])
@@ -1830,18 +1828,11 @@ def patch_chat(root):
     if btn is not None:
         # a plain vgui button: the border_* keys of the HUD's own buttons do nothing on it (it drew the stock white
         # outline), so the strip is its flat fill; one label, so COMMS and FILTERS share it
-        # its fill is see-through: the strip under it is a team picture (crimson on RED, azure on BLU), the button
-        # only lightens it under the pointer
-        kv.setmany(btn, xpos=0, ypos=0, zpos=2, wide=CHAT[2], tall=CHAT_HEAD, autoResize=0, textAlignment='west',
+        kv.setmany(btn, xpos=0, ypos=0, wide=CHAT[2], tall=CHAT_HEAD, autoResize=0, textAlignment='west',
                    labelText='//  COMMS  //  FILTERS', textinsetx=6, paintbackground=1, paintborder=0,
-                   defaultBgColor_override='0 0 0 0', armedBgColor_override='255 255 255 40',
-                   depressedBgColor_override='255 255 255 80', defaultFgColor_override='236 232 232 255',
-                   armedFgColor_override='255 255 255 255', depressedFgColor_override='255 255 255 255')
-    kv.remove(body, 'RK_ChatHead')
-    head = {'ControlName': 'CTFImagePanel', 'fieldName': 'RK_ChatHead', 'xpos': 0, 'ypos': 0, 'zpos': 1,
-            'wide': CHAT[2], 'tall': CHAT_HEAD, 'visible': 1, 'enabled': 1, 'scaleImage': 1, 'mouseinputenabled': 0}
-    head.update(team_keys('chat_head'))
-    kv.add_block(body, 'RK_ChatHead', head)
+                   defaultBgColor_override='150 16 32 235', armedBgColor_override='224 26 46 255',
+                   depressedBgColor_override='255 52 76 255', defaultFgColor_override='236 232 232 255',
+                   armedFgColor_override='255 255 255 255', depressedFgColor_override='7 7 9 255')
 
 
 # the chat's filter checklist (FILTERS on the chat's header): the stock file (hl2's, not in tf2_misc), kept here
