@@ -878,8 +878,8 @@ ADDITIVE = {'ig_digits_add', 'ig_ammo_digits_add'}   # added to what is under th
 
 def chat_well():
     """The open chat's history well frame (its border, set in chatscheme.res: the game paints it only while the chat
-    is open): faint scanlines, a thin frame, crimson corner brackets top left and bottom right, a small 会話 // COMMS
-    tag. No fill: the well's own background colour is its ink."""
+    is open): faint scanlines, a thin frame, crimson corner brackets top left and bottom right. No text (a tag would
+    sit behind the chat lines). No fill: the well's own background colour is its ink."""
     w, h = CHAT[2] - 2 * CHAT_PAD, CHAT_WELL_H
     p = Px(w, h)
     W, H = p.W, p.H
@@ -889,9 +889,6 @@ def chat_well():
     L, T = 34, 2.5
     p.rect(0, 0, L, T, c(RED)); p.rect(0, 0, T, L * 0.6, c(RED))
     p.rect(W - L, H - T, W, H, c(RED)); p.rect(W - T, H - L * 0.6, W, H, c(RED))
-    p.rect(12, 9, 17, 14, c(RED))
-    x = p.text(23, 11.5, '会話', ('jp5', 11), c(GREY), 'lm')
-    p.text(23 + x + 6, 11.5, '//  COMMS', ('mono', 11), c(GREY, 170), 'lm')
     return p.result()
 
 
@@ -1813,7 +1810,7 @@ def patch_chat(root):
     """The open chat: the chat reads its own scheme, resource/chatscheme.res (build.build_chatscheme): its fonts
     (Tektur), the typing line's dark field, the red scroll bar and the history well's frame come from there. Here:
     its background, painted only while it is open, is a light ink glass, the history well sits inset in it with the
-    HUD's frame (crimson corner brackets, 会話 // COMMS; the game paints that border only while the chat is open),
+    HUD's frame (crimson corner brackets; the game paints that border only while the chat is open),
     the filters button is a crimson header strip across the top (//  COMMS  //  FILTERS), hot red on hover. No border
     on the chat itself or on the typing line: those are drawn while the chat is closed too."""
     body = next(e[1] for e in root if isinstance(e[1], list))
